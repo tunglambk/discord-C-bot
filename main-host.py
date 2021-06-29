@@ -143,7 +143,7 @@ class MyClient(discord.Client):
         if str(message.author.id) == '403040446118363138':
             return
             
-        if message.channel.name=="spam-bot" or message.channel.name=="ark":
+        if message.channel.name=="spam-bot":# or message.channel.name=="ark":
 
             ark = False
             if message.channel.name=="ark":
