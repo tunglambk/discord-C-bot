@@ -138,7 +138,7 @@ class MyClient(discord.Client):
     async def on_message(self, message):
 
         #if message.channel.name=="test-con-bot-cua-tung":
-        if message.channel.name=="ark" or message.channel.name=="spam-bot":
+        if message.channel.name=="spam-bot":# or message.channel.name=="ark":
 
             if message.content.startswith('?help'):
                 help = ''
