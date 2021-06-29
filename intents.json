@@ -14,6 +14,11 @@
          "responses": ["ma-gin ăn đb, ăn cớt nha feng", "ma-gin ngủ gầm cầu", "Muốn hết tiền thì chơi ma-gin", "ma-gin là làm giàu cho CZ", "Còn cái nịt"],
          "context_set": ""
         },
+        {"tag": "trade",
+         "patterns": ["trade", "trây tréc", "tray trec"],
+         "responses": ["trây tréc hư người đó feng", "Trade rồi ngủ gầm cầu", "Trade đi để biết mùi âm tiền là như nào", "Còn cái nịt"],
+         "context_set": ""
+        },
 	{"tag": "future",
          "patterns": ["đánh future", "chơi future", "choi future", "đánh future", "future"],
          "responses": ["Chơi futur3 tương lai như Chí Phèo", "Chơi futur3 bán vợ bán con", "Chơi futur3 để dập tắt tương lai", "Còn cái nịt"],
