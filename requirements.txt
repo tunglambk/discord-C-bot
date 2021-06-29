@@ -1,2 +1,5 @@
 pycoingecko
 discord.py-self
+nltk
+tflearn
+tensorflow
