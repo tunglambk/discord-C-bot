@@ -28,16 +28,16 @@ class MyClient(discord.Client):
 
     async def on_message(self, message):
 
-        if message.channel.name=="test-con-bot-cua-tung":
-        #if message.channel.name=="ark":
+        #if message.channel.name=="test-con-bot-cua-tung":
+        if message.channel.name=="ark":
 
             if message.content.startswith('?help'):
                 help = ''
-                price_string =          '*!price coin-1, coin-2*:             check price of coins\n'
-                price_tlln_string =     '*!price tlln*:                       check price of tlln coin list\n'
-                price_shitcoin_string = '*!price shitcoin*:                   check price of some fucking shitcoin\n'
-                rate_string =           '*!rate number coin-1 = ? coin-2*:    check coin rate (Exp: !rate 10 neo = ? gas)\n'
-                select_string =         '*!select xxx, yyy, zzz*:             select randomly\n'
+                price_string =          '**!price coin-1, coin-2**: check price of coins\n'
+                price_tlln_string =     '**!price tlln**: check price of tlln coin list\n'
+                price_shitcoin_string = '**!price shitcoin**: check price of some fucking shitcoin\n'
+                rate_string =           '**!rate number coin-1 = ? coin-2**: check coin rate (Exp: !rate 10 neo = ? gas)\n'
+                select_string =         '**!select xxx, yyy, zzz**: select randomly\n'
                 help = price_string + price_tlln_string + price_shitcoin_string + rate_string + select_string
                 await message.channel.send(help)
 
@@ -52,6 +52,12 @@ class MyClient(discord.Client):
                         return
                 res = cg.get_coin_market_chart_by_id(coin, 'usd', 1)
                 print(res)
+
+
+            if message.content.startswith('!soi'):
+                for user in message.mentions:
+                    userAvatar = user.avatar_url
+                    await message.channel.send(userAvatar)
 
             if message.content.startswith('!rate'):
                 content = message.content[5:].strip()
