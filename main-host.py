@@ -152,7 +152,9 @@ class MyClient(discord.Client):
                 price_shitcoin_string = '> **!price shitcoin**: check price of some fucking shitcoin\n'
                 rate_string =           '> **!rate number coin-1 = ? coin-2**: check coin rate (Exp: !rate 10 neo = ? gas)\n'
                 select_string =         '> **!select xxx, yyy, zzz**: select randomly\n'
-                help = soi_string + price_string + price_tlln_string + price_shitcoin_string + rate_string + select_string
+                soiguong_string =       '> **!xoa**: xoa đầu ếch\n'
+                xoadau_string =         '> **!soi gương**: trả về ảnh soi gương\n'
+                help = soi_string + price_string + price_tlln_string + price_shitcoin_string + rate_string + select_string + soiguong_string + xoadau_string
                 await message.channel.send(help)
                 return
 
@@ -168,6 +170,15 @@ class MyClient(discord.Client):
                 res = cg.get_coin_market_chart_by_id(coin, 'usd', 1)
                 print(res)
 
+            if message.content == '!soi gương':
+                response = 'https://media.discordapp.net/attachments/829403779513974824/859350808524488714/unknown.png'
+                await message.channel.send(helresponsep)
+                return
+
+            if message.content.startswith('!xoa'):
+                response = 'https://media.discordapp.net/attachments/829403779513974824/859350641344249886/ech.gif'
+                await message.channel.send(helresponsep)
+                return
 
             if message.content.startswith('!soi'):
                 for user in message.mentions:
@@ -247,7 +258,7 @@ class MyClient(discord.Client):
                 return
 
 
-            if message.content[0] == ':' and if message.content[-1] == ':':
+            if (message.content[0] == ':') and (message.content[-1] == ':'):
                 return
 
             inp = message.content
