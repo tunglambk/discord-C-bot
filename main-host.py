@@ -33,11 +33,11 @@ class MyClient(discord.Client):
 
             if message.content.startswith('?help'):
                 help = ''
-                price_string = '!price coin-1, coin-2: check price of coins\n'
-                price_tlln_string = '!price tlln: check price of tlln coin list\n'
-                price_shitcoin_string = '!price shitcoin: check price of some fucking shitcoin\n'
-                rate_string = '!rate number coin-1 = ? coin-2: check coin rate (Exp: !rate 10 neo = ? gas)\n'
-                select_string = '!select xxx, yyy, zzz: select randomly\n'
+                price_string =          '*!price coin-1, coin-2*:             check price of coins\n'
+                price_tlln_string =     '*!price tlln*:                       check price of tlln coin list\n'
+                price_shitcoin_string = '*!price shitcoin*:                   check price of some fucking shitcoin\n'
+                rate_string =           '*!rate number coin-1 = ? coin-2*:    check coin rate (Exp: !rate 10 neo = ? gas)\n'
+                select_string =         '*!select xxx, yyy, zzz*:             select randomly\n'
                 help = price_string + price_tlln_string + price_shitcoin_string + rate_string + select_string
                 await message.channel.send(help)
 
