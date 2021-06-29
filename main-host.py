@@ -17,7 +17,7 @@ import json
 import pickle
 import os
 
-os.remove(data.pickle)
+os.remove("data.pickle")
 
 with open("intents.json") as file:
     data = json.load(file)
