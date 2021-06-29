@@ -34,9 +34,24 @@
          "responses": ["Lên keodau.net nhé feng", "Nốc redpill đi feng", "Ăn kẹo dâu đi feng"],
          "context_set": ""
         },
-        {"tag": "bot",
-         "patterns": ["bot ngu", "bot khôn", "bot khon", "bot vl"],
+        {"tag": "bot-khon",
+         "patterns": ["bot khôn", "bot khon", "bot vl", "bot gioi vl"],
          "responses": ["B-o-t IQ 2000", "B-o-t học Hardvard nên khôn lắm", "B-o-t chạy NLP machine learning nên khôn lắm"],
+         "context_set": ""
+        },
+        {"tag": "bot-ngu",
+         "patterns": ["bot ngu", "bot ngu vl", "bot oc cho", "bot óc chó"],
+         "responses": ["B-o-t IQ 2000", "Chửi b-o-t coi chừng b-o-t đánh đòn", "Feng cũng ngu như b-o-t", "Bot khôn hơn feng", "B-o-t méc senpai Hồng tím bây giờ"],
+         "context_set": ""
+        },
+        {"tag": "bot-chui",
+         "patterns": ["dm bot", "lol bot", "đm bot", "fuck bot"],
+         "responses": ["B-o-t IQ 2000", "Chửi b-o-t coi chừng b-o-t đánh đòn", "Feng cũng ngu như b-o-t", "Bot khôn hơn feng", "B-o-t méc senpai Hồng tím bây giờ"],
+         "context_set": ""
+        },
+        {"tag": "bot-tra-loi",
+         "patterns": ["answer me", "bot tra loi tao", "bot trả lời tao"],
+         "responses": ["Feng là gì mà bot phải trả lời"],
          "context_set": ""
         }
          
