@@ -81,7 +81,7 @@
         },
         {"tag": "ptkt",
          "patterns": ["ptkt", "phan tich ky thuat", "phan tich thi truong", "thi truong", "thị trường"],
-         "responses": ["PTKT để trade tréc thì còn cái nịt", "Phân tích rồi cũng ra đê ngủ", "Phân tích làm gì cá voi nó đập cho cũng vậy"],
+         "responses": ["PTKT để trây tréc thì còn cái nịt", "Phân tích rồi cũng ra đê ngủ", "Phân tích làm gì cá voi nó đập cho cũng vậy"],
          "context_set": ""
         },
         {"tag": "pump",

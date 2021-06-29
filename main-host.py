@@ -139,7 +139,7 @@ class MyClient(discord.Client):
     async def on_message(self, message):
 
         #if message.channel.name=="test-con-bot-cua-tung":
-        if str(message.author.id) != '403040446118363138':
+        if str(message.author.id) == '403040446118363138':
             return
             
         if message.channel.name=="spam-bot" or message.channel.name=="ark":
