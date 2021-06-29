@@ -138,9 +138,13 @@ class MyClient(discord.Client):
     async def on_message(self, message):
 
         #if message.channel.name=="test-con-bot-cua-tung":
-        if message.channel.name=="spam-bot":# or message.channel.name=="ark":
+        if message.channel.name=="spam-bot" or message.channel.name=="ark":
 
-            if message.content.startswith('?help'):
+            ark = False
+            if message.channel.name=="ark":
+                ark = True
+
+            if message.content.startswith('?help') and not ark:
                 help = ''
                 soi_string =            '> **!soi @mention-member-1, @mention-member-2: show avatars**\n'
                 price_string =          '> **!price coin-1, coin-2**: check price of coins\n'
@@ -151,7 +155,7 @@ class MyClient(discord.Client):
                 help = soi_string + price_string + price_tlln_string + price_shitcoin_string + rate_string + select_string
                 await message.channel.send(help)
 
-            if message.content.startswith('!mk'):
+            if message.content.startswith('!mk') and not ark:
                 content = message.content[3:].strip()
                 if content in coin_sp_names:
                     coin = content
@@ -169,7 +173,7 @@ class MyClient(discord.Client):
                     userAvatar = user.avatar_url
                     await message.channel.send(userAvatar)
 
-            if message.content.startswith('!rate'):
+            if message.content.startswith('!rate') and not ark:
                 content = message.content[5:].strip()
                 content_lst = content.split(' ')
                 if (content_lst[2] != '=') or (content_lst[3] != '?'):
@@ -209,7 +213,7 @@ class MyClient(discord.Client):
                 response = random.choice(lst)
                 await message.channel.send('> '+response)
 
-            if message.content.startswith('!price'):
+            if message.content.startswith('!price') and not ark:
                 coin = message.content[6:].strip()
                 if 'tlln' in coin:
                     coin = 'neo,gas,firo,dash,zen,ark'

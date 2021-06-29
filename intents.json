@@ -1,6 +1,6 @@
 {"intents": [
         {"tag": "greeting",
-         "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Hey","Good day", "Whats up", "Ohio", "Salut", "ni hao", "Xin chào", "Xin chao"],
+         "patterns": ["Hi", "How are you", "Is anyone there?", "Hello", "Hey","Good day", "Whats up", "Ohio", "Salut", "ni hao", "Xin chào", "Xin chao", "kompanwa", "konpanwa", "konnichiwa"],
          "responses": ["Hello!", "Good to see you again!", "Hi there, how can I help?"],
          "context_set": ""
         },
@@ -50,7 +50,7 @@
          "context_set": ""
         },
         {"tag": "bot-chui",
-         "patterns": ["dm bot", "lol bot", "đm bot", "fuck bot", "loz bot", "bot loz", "bot lol"],
+         "patterns": ["dm bot", "lol bot", "đm bot", "fuck bot", "loz bot", "bot loz", "bot lol", "chó bot", "cho bot", "bot chó", "bot cho"],
          "responses": ["B-o-t IQ 2000", "Chửi b-o-t coi chừng b-o-t đánh đòn", "Feng cũng ngu như b-o-t", "Bot khôn hơn feng", "B-o-t méc senpai Hồng tím bây giờ"],
          "context_set": ""
         },
@@ -75,12 +75,12 @@
          "context_set": ""
         },
         {"tag": "gai",
-         "patterns": ["gái gú", "mê gái", "thèm gái", "gái đâu", "gái xinh", "gái kìa"],
+         "patterns": ["gái gú", "mê gái", "thèm gái", "gái đâu", "gái xinh", "gái kìa", "gai gu"],
          "responses": ["Gái gú là phù du", "Theo gái còn cái nịt"],
          "context_set": ""
         },
         {"tag": "ptkt",
-         "patterns": ["ptkt", "phan tich ky thuat", "phan tich thi truong", "thi truong"],
+         "patterns": ["ptkt", "phan tich ky thuat", "phan tich thi truong", "thi truong", "thị trường"],
          "responses": ["PTKT để trade tréc thì còn cái nịt", "Phân tích rồi cũng ra đê ngủ", "Phân tích làm gì cá voi nó đập cho cũng vậy"],
          "context_set": ""
         },
@@ -100,18 +100,23 @@
          "context_set": ""
         },
         {"tag": "hongtim",
-         "patterns": ["đm Hồng tím", "dm Hong tim", "fuck Hong tim"],
-         "responses": ["...", "Bot méc senpai Hồng tím bây giờ"],
+         "patterns": ["đm Hồng tím", "dm Hong tim", "fuck Hong tim", "dm hongtim", "fuck hongtim"],
+         "responses": ["Hồng tím ơi!!!!!", "Bot méc senpai Hồng tím bây giờ"],
          "context_set": ""
         },
         {"tag": "muaark",
-         "patterns": ["mua ark"],
+         "patterns": ["mua ark khong", "mua ark không"],
          "responses": ["Bỏ đi cái kiếp làm hề"],
          "context_set": ""
         },
         {"tag": "muatllncoin",
-         "patterns": ["mua gas", "mua zen", "mua dash", "mua firo", "mua cá", "mua gà", "mua heo"],
+         "patterns": ["mua gas không", "mua zen không", "mua dash không", "mua firo không", "mua cá không", "mua gà không", "mua heo không"],
          "responses": ["Mua coin MC shill tương lai giàu không khó", "Mua coin MC shill rồi hodl thôi", "Mua coin MC shill để thoát ratrace"],
+         "context_set": ""
+        },
+        {"tag": "dambot",
+         "patterns": ["đấm nhau không", "dam nhau khong", "danh bot", "đấm bot", "đánh bot", "dam bot"],
+         "responses": ["Bot không thích đánh nhau", "Bot là bot hòa đồng vui vẻ", "Nổ địa chỉ đi", "Để bot kêu đại ca"],
          "context_set": ""
         }
          
