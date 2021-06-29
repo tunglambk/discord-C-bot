@@ -1,6 +1,6 @@
 {"intents": [
         {"tag": "greeting",
-         "patterns": ["Hi", "Hello", "Ohio", "Salut", "ni hao", "Xin chào", "Xin chao", "kompanwa", "konpanwa", "konnichiwa"],
+         "patterns": ["Hi", "Hello", "Ohio", "Salut", "ni hao", "Xin chào", "Xin chao", "kompanwa", "konpanwa", "konnichiwa", "Au revoir"],
          "responses": ["Hello!", "Good to see you again!", "Hi there, how can I help?"],
          "context_set": ""
         },
@@ -25,7 +25,7 @@
          "context_set": ""
         },
 	{"tag": "hodl",
-         "patterns": ["hold", "hodl", "hold coin", "hodl coin"],
+         "patterns": ["hold", "hold coin"],
          "responses": ["hâu coin thành tỷ phú", "hâu coin thoát ratrace,", "hâu to die", "hâu tới 2022 rồi tính", "Còn cái nịt"],
          "context_set": ""
         },
@@ -61,7 +61,7 @@
         },
         {"tag": "bot-dau",
          "patterns": ["bot đâu rồi", "bot dau roi", "cần bot", "can bot", "bot oi", "bot ơi", "alo bot"],
-         "responses": ["Bot đây, feng cần gì", "Bot xuất hiện đúng người đúng thời điểm", "Ai triệu hồi bot"],
+         "responses": ["Bot đây, feng cần gì", "Ai triệu hồi bot"],
          "context_set": ""
         },
         {"tag": "buc-shadow",
@@ -95,7 +95,7 @@
          "context_set": ""
         },
         {"tag": "ech",
-         "patterns": ["ếch bục shadow", "ech buc shadow", "ếch chửi", "ech chui"],
+         "patterns": ["ếch bục shadow", "ếch chửi"],
          "responses": ["Đừng như ếch", "Thấy ếch làm gì thì làm ngược lại"],
          "context_set": ""
         },
@@ -110,7 +110,7 @@
          "context_set": ""
         },
         {"tag": "muatllncoin",
-         "patterns": ["mua gas không", "mua zen không", "mua dash không", "mua firo không", "mua cá không", "mua gà không", "mua heo không"],
+         "patterns": ["mua cá không", "mua gà không", "mua heo không"],
          "responses": ["Mua coin MC shill tương lai giàu không khó", "Mua coin MC shill rồi hodl thôi", "Mua coin MC shill để thoát ratrace"],
          "context_set": ""
         },
@@ -130,7 +130,7 @@
          "context_set": ""
         },
         {"tag": "soichart",
-         "patterns": ["chart thế nào", "chart the nao", "xem chart"],
+         "patterns": ["chart thế nào", "xem chart"],
          "responses": ["Xem chart mụ mị đầu óc", "Xem chart nhiều quá stress đó feng", "Bỏ xem chart đi mà làm người", "Soi chart làm chi, đi chạy bộ đi"],
          "context_set": ""
         },

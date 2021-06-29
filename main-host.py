@@ -16,6 +16,7 @@ import random
 import json
 import pickle
 import os
+from tho import tho
 
 if os.path.isfile("data.pickle"):
     os.remove("data.pickle")
@@ -156,6 +157,11 @@ class MyClient(discord.Client):
                 xoadau_string =         '> **!soi gương**: trả về ảnh soi gương\n'
                 help = soi_string + price_string + price_tlln_string + price_shitcoin_string + rate_string + select_string + soiguong_string + xoadau_string
                 await message.channel.send(help)
+                return
+
+            if message.content.startswith('!tho'):
+                response = random.choice(tho)
+                await message.channel.send(response)
                 return
 
             if message.content.startswith('!mk') and not ark:
