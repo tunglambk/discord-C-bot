@@ -11,7 +11,8 @@
         },
         {"tag": "margin",
          "patterns": ["choi margin", "danh margin", "chơi margin", "đánh margin", "margin"],
-         "responses": ["ma-gin ăn đb, ăn cớt nha feng", "ma-gin ngủ gầm cầu", "Muốn hết tiền thì chơi ma-gin", "ma-gin là làm giàu cho CZ", "Còn cái nịt"],
+         "responses": ["ma-gin ăn đb, ăn cớt nha feng", "ma-gin ngủ gầm cầu", "Muốn hết tiền thì chơi ma-gin", "ma-gin là làm giàu cho CZ", "Còn cái nịt", 
+                        "Long đi lên, Short đi xuống,\nChart nến chính giữa, đời em úa tàn"],
          "context_set": ""
         },
         {"tag": "trade",
@@ -137,6 +138,12 @@
         {"tag": "botbede",
          "patterns": ["bot bede", "bot gay", "bot bê đê", "bot be de"],
          "responses": ["Đưa deed đây", "Bot gay như feng vậy", "Ừa, feng là bạn trai của bot mà", "Bot tes 10000k", "Bot trai thẳng"],
+         "context_set": ""
+        },
+        {"tag": "muacoin",
+         "patterns": ["mua coin nào", "nên mua coin nào"],
+         "responses": ["Trên sàn có nhiều loại coins\nNhưng em vẫn cứ all in cá đều", "Em đây không có money\nChỉ có tấm lòng lủi phủi theo NEO",
+                        "Thơ em tuy có không vần\nThế nhưng em vẫn ân cần bên ark"],
          "context_set": ""
         }
          

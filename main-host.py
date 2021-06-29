@@ -17,6 +17,7 @@ import json
 import pickle
 import os
 from tho import tho
+from nofap import nofap
 
 if os.path.isfile("data.pickle"):
     os.remove("data.pickle")
@@ -164,6 +165,11 @@ class MyClient(discord.Client):
 
             if message.content.startswith('!tho'):
                 response = random.choice(tho)
+                await message.channel.send(response)
+                return
+            
+            if message.content.startswith('!nofap'):
+                response = random.choice(nofap)
                 await message.channel.send(response)
                 return
 
