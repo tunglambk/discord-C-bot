@@ -60,7 +60,7 @@
          "context_set": ""
         },
         {"tag": "bot-dau",
-         "patterns": ["bot đâu rồi", "bot dau roi", "cần bot", "can bot", "bot oi", "bot ơi"],
+         "patterns": ["bot đâu rồi", "bot dau roi", "cần bot", "can bot", "bot oi", "bot ơi", "alo bot"],
          "responses": ["Bot đây, feng cần gì", "Bot xuất hiện đúng người đúng thời điểm", "Ai triệu hồi bot"],
          "context_set": ""
         },
@@ -117,6 +117,31 @@
         {"tag": "dambot",
          "patterns": ["đấm nhau không", "dam nhau khong", "danh bot", "đấm bot", "đánh bot", "dam bot"],
          "responses": ["Bot không thích đánh nhau", "Bot là bot hòa đồng vui vẻ", "Nổ địa chỉ đi", "Để bot kêu đại ca"],
+         "context_set": ""
+        },
+        {"tag": "thethao",
+         "patterns": ["đi chạy", "tập gym", "di chay", "tap gym", "tap the duc", "tập thể dục"],
+         "responses": ["Vận động cho khỏe người", "Chạy bộ, tập gym nào"],
+         "context_set": ""
+        },
+        {"tag": "soy",
+         "patterns": ["sua dau nanh", "sữa đậu nành", "uống soy", "uong soy"],
+         "responses": ["Coi chừng bede đó feng", "Ít dùng thực phẩm từ đậu nành đi feng"],
+         "context_set": ""
+        },
+        {"tag": "soy",
+         "patterns": ["sua dau nanh", "sữa đậu nành", "uống soy", "uong soy"],
+         "responses": ["Coi chừng bede đó feng", "Ít dùng thực phẩm từ đậu nành đi feng"],
+         "context_set": ""
+        },
+        {"tag": "soichart",
+         "patterns": ["chart nay", "nay chart", "chart thế nào", "chart the nao", "soi chart", "xem chart"],
+         "responses": ["Xem chart mụ mị đầu óc", "Xem chart nhiều quá stress đó feng", "Bỏ xem chart đi mà làm người", "Soi chart làm chi, đi chạy bộ đi"],
+         "context_set": ""
+        },
+        {"tag": "botbede",
+         "patterns": ["bot bede", "bot gay", "bot bê đê", "bot be de", "bot bóng"],
+         "responses": ["Đưa deed đây", "Bot gay như feng vậy", "Ừa, feng là bạn trai của bot mà", "Bot tes 10000k", "Bot trai thẳng"],
          "context_set": ""
         }
          
