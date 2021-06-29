@@ -2,4 +2,4 @@ pycoingecko
 discord.py-self
 nltk
 tflearn
-tensorflow
+tensorflow-cpu
