@@ -90,7 +90,7 @@
          "context_set": ""
         },
         {"tag": "dump",
-         "patterns": ["dump quá", "dump sml", "dump vl"],
+         "patterns": ["coin dump quá", "coin dump sml", "coin dump vl", "market dump vl"],
          "responses": ["Dump thì mình DCA", "Diamond hands", "Diamond balls"],
          "context_set": ""
         },
@@ -130,12 +130,12 @@
          "context_set": ""
         },
         {"tag": "soichart",
-         "patterns": ["chart thế nào", "chart the nao", "soi chart", "xem chart"],
+         "patterns": ["chart thế nào", "chart the nao", "xem chart"],
          "responses": ["Xem chart mụ mị đầu óc", "Xem chart nhiều quá stress đó feng", "Bỏ xem chart đi mà làm người", "Soi chart làm chi, đi chạy bộ đi"],
          "context_set": ""
         },
         {"tag": "botbede",
-         "patterns": ["bot bede", "bot gay", "bot bê đê", "bot be de", "bot bóng"],
+         "patterns": ["bot bede", "bot gay", "bot bê đê", "bot be de"],
          "responses": ["Đưa deed đây", "Bot gay như feng vậy", "Ừa, feng là bạn trai của bot mà", "Bot tes 10000k", "Bot trai thẳng"],
          "context_set": ""
         }
