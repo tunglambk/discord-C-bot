@@ -154,6 +154,7 @@ class MyClient(discord.Client):
                 select_string =         '> **!select xxx, yyy, zzz**: select randomly\n'
                 help = soi_string + price_string + price_tlln_string + price_shitcoin_string + rate_string + select_string
                 await message.channel.send(help)
+                return
 
             if message.content.startswith('!mk') and not ark:
                 content = message.content[3:].strip()
@@ -172,6 +173,7 @@ class MyClient(discord.Client):
                 for user in message.mentions:
                     userAvatar = user.avatar_url
                     await message.channel.send(userAvatar)
+                    return
 
             if message.content.startswith('!rate') and not ark:
                 content = message.content[5:].strip()
@@ -205,6 +207,7 @@ class MyClient(discord.Client):
                     
                     string = str(num_1) + " " + content_lst[1] + ' = ' + str(rate) + ' ' + content_lst[4]
                     await message.channel.send('> '+string)
+                    return
                     
 
             if message.content.startswith('!select'):
@@ -212,6 +215,7 @@ class MyClient(discord.Client):
                 lst = content.split(',')
                 response = random.choice(lst)
                 await message.channel.send('> '+response)
+                return
 
             if message.content.startswith('!price') and not ark:
                 coin = message.content[6:].strip()
@@ -237,8 +241,13 @@ class MyClient(discord.Client):
                 for item in price:
                     string += '> ' + item + ' = ' + str(price[item]['usd']) + ' usd\n'
                 await message.channel.send(string)
+                return
 
             if message.author == self.user:
+                return
+
+
+            if message.content[0] == ':' and if message.content[-1] == ':':
                 return
 
             inp = message.content
@@ -246,7 +255,7 @@ class MyClient(discord.Client):
             result_index = np.argmax(result)
             tag = labels[result_index]
             print(result[result_index])
-            if result[result_index] > 0.9:
+            if result[result_index] > 0.925:
                 for tg in data["intents"]:
                     if tg['tag'] == tag:
                         responses = tg['responses']
