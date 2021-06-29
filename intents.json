@@ -16,7 +16,7 @@
         },
         {"tag": "trade",
          "patterns": ["trade", "trây tréc", "tray trec"],
-         "responses": ["trây tréc hư người đó feng", "Trade rồi ngủ gầm cầu", "Trade đi để biết mùi âm tiền là như nào", "Còn cái nịt"],
+         "responses": ["trây tréc hư người đó feng", "Trây rồi ngủ gầm cầu", "Trây đi để biết mùi âm tiền là như nào", "Còn cái nịt"],
          "context_set": ""
         },
 	{"tag": "future",
