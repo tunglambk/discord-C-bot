@@ -42,7 +42,7 @@ class MyClient(discord.Client):
                 await message.channel.send(help)
 
             if message.content.startswith('!mk'):
-                content = message.content[3:].strip(
+                content = message.content[3:].strip()
                 if content in coin_sp_names:
                     coin = content
                 else:
