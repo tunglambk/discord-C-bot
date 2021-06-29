@@ -172,12 +172,12 @@ class MyClient(discord.Client):
 
             if message.content == '!soi gương':
                 response = 'https://media.discordapp.net/attachments/829403779513974824/859350808524488714/unknown.png'
-                await message.channel.send(helresponsep)
+                await message.channel.send(response)
                 return
 
             if message.content.startswith('!xoa'):
                 response = 'https://media.discordapp.net/attachments/829403779513974824/859350641344249886/ech.gif'
-                await message.channel.send(helresponsep)
+                await message.channel.send(response)
                 return
 
             if message.content.startswith('!soi'):
