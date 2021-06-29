@@ -17,6 +17,8 @@ import json
 import pickle
 import os
 
+os.remove(data.pickle)
+
 with open("intents.json") as file:
     data = json.load(file)
 
@@ -80,8 +82,8 @@ net = tflearn.fully_connected(net, len(output[0]), activation="softmax")
 net = tflearn.regression(net)
 
 model = tflearn.DNN(net)
-#model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
-#model.save("model.tflearn")
+model.fit(training, output, n_epoch=1000, batch_size=8, show_metric=True)
+model.save("model.tflearn")
 
 try:
     model.load("model.tflearn")
