@@ -168,7 +168,7 @@ class MyClient(discord.Client):
                 await message.channel.send(response)
                 return
             
-            if message.content.startswith('!nofap') or message.content.startswith('fap'):
+            if message.content.startswith('!nofap') or message.content.startswith('!fap'):
                 response = random.choice(nofap)
                 await message.channel.send(response)
                 return
