@@ -142,12 +142,12 @@ class MyClient(discord.Client):
 
             if message.content.startswith('?help'):
                 help = ''
-                soi_string =            '**!soi @mention-member-1, @mention-member-2: show avatars**\n'
-                price_string =          '**!price coin-1, coin-2**: check price of coins\n'
-                price_tlln_string =     '**!price tlln**: check price of tlln coin list\n'
-                price_shitcoin_string = '**!price shitcoin**: check price of some fucking shitcoin\n'
-                rate_string =           '**!rate number coin-1 = ? coin-2**: check coin rate (Exp: !rate 10 neo = ? gas)\n'
-                select_string =         '**!select xxx, yyy, zzz**: select randomly\n'
+                soi_string =            '> **!soi @mention-member-1, @mention-member-2: show avatars**\n'
+                price_string =          '> **!price coin-1, coin-2**: check price of coins\n'
+                price_tlln_string =     '> **!price tlln**: check price of tlln coin list\n'
+                price_shitcoin_string = '> **!price shitcoin**: check price of some fucking shitcoin\n'
+                rate_string =           '> **!rate number coin-1 = ? coin-2**: check coin rate (Exp: !rate 10 neo = ? gas)\n'
+                select_string =         '> **!select xxx, yyy, zzz**: select randomly\n'
                 help = soi_string + price_string + price_tlln_string + price_shitcoin_string + rate_string + select_string
                 await message.channel.send(help)
 
@@ -200,14 +200,14 @@ class MyClient(discord.Client):
                     rate = round(price_1/price_2 * num_1, 3)
                     
                     string = str(num_1) + " " + content_lst[1] + ' = ' + str(rate) + ' ' + content_lst[4]
-                    await message.channel.send(string)
+                    await message.channel.send('> '+string)
                     
 
             if message.content.startswith('!select'):
                 content = message.content[5:]
                 lst = content.split(',')
                 response = random.choice(lst)
-                await message.channel.send(response)
+                await message.channel.send('> '+response)
 
             if message.content.startswith('!price'):
                 coin = message.content[6:].strip()
@@ -231,7 +231,7 @@ class MyClient(discord.Client):
                 print(price)
                 string = ''
                 for item in price:
-                    string += item + ' = ' + str(price[item]['usd']) + ' usd\n'
+                    string += '> ' + item + ' = ' + str(price[item]['usd']) + ' usd\n'
                 await message.channel.send(string)
 
             if message.author == self.user:
@@ -248,7 +248,7 @@ class MyClient(discord.Client):
                         responses = tg['responses']
             
                 bot_response=random.choice(responses)
-                await message.channel.send(bot_response.format(message))
+                await message.channel.send('> ' + bot_response.format(message))
 
 token = os.getenv("DISCORD_TOKEN")
 client = MyClient()
