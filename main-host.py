@@ -1,6 +1,7 @@
 import discord
 import random
 from pycoingecko import CoinGeckoAPI
+import os
 
 cg = CoinGeckoAPI()
 coin_sp_lst = cg.get_coins_list()
