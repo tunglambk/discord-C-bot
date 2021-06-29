@@ -11,27 +11,32 @@
         },
         {"tag": "margin",
          "patterns": ["choi margin", "danh margin", "chơi margin", "đánh margin"],
-         "responses": ["chơi margin ăn đb, ăn cớt nha feng", "chơi margin ngủ gầm cầu", "Muốn hết tiền thì chơi margin", "Chơi margin là làm giàu cho CZ"],
+         "responses": ["ma-gin ăn đb, ăn cớt nha feng", "ma-gin ngủ gầm cầu", "Muốn hết tiền thì chơi ma-gin", "ma-gin là làm giàu cho CZ", "Còn cái nịt"],
          "context_set": ""
         },
 	{"tag": "future",
          "patterns": ["đánh future", "chơi future", "choi future", "đánh future"],
-         "responses": ["Chơi future tương lai như Chí Phèo", "Chơi future bán vợ bán con", "Chơi future để dập tắt tương lai"],
+         "responses": ["Chơi futur3 tương lai như Chí Phèo", "Chơi futur3 bán vợ bán con", "Chơi futur3 để dập tắt tương lai", "Còn cái nịt"],
          "context_set": ""
         },
 	{"tag": "hodl",
          "patterns": ["hold", "hodl", "hold coin", "hodl coin"],
-         "responses": ["hold coin thành tỷ phú", "hold coin thoát ratrace,", "hold to die", "hodl tới 2022 rồi tính"],
+         "responses": ["hâu coin thành tỷ phú", "hâu coin thoát ratrace,", "hâu to die", "hâu tới 2022 rồi tính", "Còn cái nịt"],
          "context_set": ""
         },
 	{"tag": "ratrace",
          "patterns": ["thoát ratrace", "thoat ratrace", "chán ratrace", "chan ratrace"],
-         "responses": ["Hold coin thoát kiếp ratrace", "Ratrace là làm giàu cho ông chủ", "Hold Neo, Gas, Firo để thoát ratrace nha feng"],
+         "responses": ["Hâu coin thoát kiếp đua chuột", "Đua chuột là làm giàu cho ông chủ", "Hâu Neo, Gas, Firo để thoát đua chuột nha feng", "Còn cái nịt"],
          "context_set": ""
         },
 	{"tag": "simp",
          "patterns": ["thoat simp", "thoát simp", "hết simp", "het simp"],
          "responses": ["Lên keodau.net nhé feng", "Nốc redpill đi feng", "Ăn kẹo dâu đi feng"],
+         "context_set": ""
+        },
+        {"tag": "bot",
+         "patterns": ["bot ngu", "bot khôn", "bot khon", "bot vl"],
+         "responses": ["B-o-t IQ 2000", "B-o-t học Hardvard nên khôn lắm", "B-o-t chạy NLP machine learning nên khôn lắm"],
          "context_set": ""
         }
          
