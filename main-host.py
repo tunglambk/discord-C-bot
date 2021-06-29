@@ -17,7 +17,8 @@ import json
 import pickle
 import os
 
-os.remove("data.pickle")
+if os.path.isfile("data.pickle"):
+    os.remove("data.pickle")
 
 with open("intents.json") as file:
     data = json.load(file)
@@ -137,7 +138,7 @@ class MyClient(discord.Client):
     async def on_message(self, message):
 
         #if message.channel.name=="test-con-bot-cua-tung":
-        if message.channel.name=="ark":
+        if message.channel.name=="ark" or message.channel.name=="spam-bot":
 
             if message.content.startswith('?help'):
                 help = ''
