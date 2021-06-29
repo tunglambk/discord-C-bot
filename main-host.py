@@ -242,7 +242,7 @@ class MyClient(discord.Client):
             result_index = np.argmax(result)
             tag = labels[result_index]
             print(result[result_index])
-            if result[result_index] > 0.8:
+            if result[result_index] > 0.85:
                 for tg in data["intents"]:
                     if tg['tag'] == tag:
                         responses = tg['responses']

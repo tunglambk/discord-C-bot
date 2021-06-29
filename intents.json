@@ -53,6 +53,11 @@
          "patterns": ["answer me", "bot tra loi tao", "bot trả lời tao"],
          "responses": ["Feng là gì mà bot phải trả lời"],
          "context_set": ""
+        },
+        {"tag": "bot-dau",
+         "patterns": ["bot đâu rồi", "bot dau roi", "cần bot", "can bot"],
+         "responses": ["Bot đây, feng cần gì", "Bot xuất hiện đúng người đúng thời điểm", "Ai triệu hồi bot"],
+         "context_set": ""
         }
          
    ]
