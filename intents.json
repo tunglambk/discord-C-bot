@@ -103,7 +103,7 @@
          "patterns": ["mua ark"],
          "responses": ["Bỏ đi cái kiếp làm hề"],
          "context_set": ""
-        }
+        },
         {"tag": "muatllncoin",
          "patterns": ["mua gas", "mua zen", "mua dash", "mua firo", "mua cá", "mua gà", "mua heo"],
          "responses": ["Mua coin MC shill tương lai giàu không khó", "Mua coin MC shill rồi hodl thôi", "Mua coin MC shill để thoát ratrace"],
