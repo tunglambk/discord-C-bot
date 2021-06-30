@@ -143,7 +143,7 @@ class MyClient(discord.Client):
         if str(message.author.id) == '403040446118363138':
             return
 
-        satoshi_channel = {"spam-bot", "ark", "spam-human", "neo-and-gas"}
+        satoshi_channel = {"spam-bot", "ark", "spam-human"}
         if message.channel.name in satoshi_channel:
             if 'satoshi' in message.content:
                 milosid = '<@776381590602514443>'
