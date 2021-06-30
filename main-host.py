@@ -18,6 +18,7 @@ import pickle
 import os
 from tho import tho
 from nofap import nofap
+from truyencuoi import truyencuoi
 from facepplib import FacePP
 import time
 
@@ -177,15 +178,21 @@ class MyClient(discord.Client):
                 face_string =           '> **!face @mention-member**: avatar face detection\n'
                 select_string =         '> **!select xxx, yyy, zzz**: select randomly\n'
                 tho_string =            '> **!tho**: trả về 1 đoạn thơ\n'
+                truyencuoi_string =     '> **!tho**: trả về 1 truyện cười\n'
                 fap_string =            '> **!fap** hoặc **!nofap**: show ảnh no fap\n'
                 help = crypto_intro + price_string + price_tlln_string + rate_string + price_shitcoin_string \
-                        + space + funny_intro + soi_string + face_string + select_string + tho_string + fap_string
+                        + space + funny_intro + soi_string + face_string + select_string + tho_string + truyencuoi_string + fap_string
 
                 await message.channel.send(help)
                 return
 
             if message.content.startswith('!tho'):
                 response = random.choice(tho)
+                await message.channel.send(response)
+                return
+
+            if message.content.startswith('!truyencuoi'):
+                response = random.choice(truyencuoi)
                 await message.channel.send(response)
                 return
 
