@@ -165,15 +165,15 @@ class MyClient(discord.Client):
             if message.content.startswith('?help') and not ark:
                 help = ''
 
-                crypto_intro =          '> **CRYPTO**\n>\n'
+                crypto_intro =          '> **CRYPTO**\n> \n'
                 price_string =          '> `!price coin-1, coin-2`: check price of coins\n'
                 price_tlln_string =     '> `!price tlln`: check price of tlln coin list\n'
                 rate_string =           '> `!rate number coin-1 = ? coin-2`: check coin rate (Exp: !rate 10 neo = ? gas)\n'
                 price_shitcoin_string = '> `!price shitcoin`: check price of some fucking shitcoin\n'
 
-                space = '>\n'
+                space = '> \n'
 
-                funny_intro =           '> **FUNNY**\n>\n'
+                funny_intro =           '> **FUNNY**\n> \n'
                 soi_string =            '> `!soi @mention-member-1, @mention-member-2`: show avatars\n'
                 face_string =           '> `!face @mention-member`: avatar face detection\n'
                 select_string =         '> `!select xxx, yyy, zzz`: select randomly\n'
