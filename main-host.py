@@ -165,21 +165,21 @@ class MyClient(discord.Client):
             if message.content.startswith('?help') and not ark:
                 help = ''
 
-                crypto_intro =          '> :bitcoin: :Neo: :firo: **CRYPTO** :gas: :zen: :dash~1:\n\n'
-                price_string =          '> **!price coin-1, coin-2**: check price of coins\n'
-                price_tlln_string =     '> **!price tlln**: check price of tlln coin list\n'
-                rate_string =           '> **!rate number coin-1 = ? coin-2**: check coin rate (Exp: !rate 10 neo = ? gas)\n'
-                price_shitcoin_string = '> **!price shitcoin**: check price of some fucking shitcoin\n'
+                crypto_intro =          '> **CRYPTO**\n>\n'
+                price_string =          '> `!price coin-1, coin-2`: check price of coins\n'
+                price_tlln_string =     '> `!price tlln`: check price of tlln coin list\n'
+                rate_string =           '> `!rate number coin-1 = ? coin-2`: check coin rate (Exp: !rate 10 neo = ? gas)\n'
+                price_shitcoin_string = '> `!price shitcoin`: check price of some fucking shitcoin\n'
 
-                space = '\n'
+                space = '>\n'
 
-                funny_intro =           '> :aPES2_HappyDance: :aPES2_HappyDance: :aPES2_HappyDance: **FUNNY** :aPES2_HappyDance: :aPES2_HappyDance: :aPES2_HappyDance: \n\n'
-                soi_string =            '> **!soi @mention-member-1, @mention-member-2**: show avatars\n'
-                face_string =           '> **!face @mention-member**: avatar face detection\n'
-                select_string =         '> **!select xxx, yyy, zzz**: select randomly\n'
-                tho_string =            '> **!tho**: trả về 1 đoạn thơ\n'
-                truyencuoi_string =     '> **!tho**: trả về 1 truyện cười\n'
-                fap_string =            '> **!fap** hoặc **!nofap**: show ảnh no fap\n'
+                funny_intro =           '> **FUNNY**\n>\n'
+                soi_string =            '> `!soi @mention-member-1, @mention-member-2`: show avatars\n'
+                face_string =           '> `!face @mention-member`: avatar face detection\n'
+                select_string =         '> `!select xxx, yyy, zzz`: select randomly\n'
+                tho_string =            '> `!tho`: trả về 1 đoạn thơ\n'
+                truyencuoi_string =     '> `!truyencuoi`: trả về 1 truyện cười\n'
+                fap_string =            '> `!fap` hoặc `!nofap`: show ảnh no fap\n'
                 help = crypto_intro + price_string + price_tlln_string + rate_string + price_shitcoin_string \
                         + space + funny_intro + soi_string + face_string + select_string + tho_string + truyencuoi_string + fap_string
 
