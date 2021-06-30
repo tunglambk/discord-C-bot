@@ -202,7 +202,7 @@ class MyClient(discord.Client):
                         age = '> Age: ' + str(image.faces[0].age['value']) + '\n'
                         gender = '> Gender: ' + str(image.faces[0].gender['value']) + '\n'
                         beauty_male = '> Beauty male score: ' + str(image.faces[0].beauty['male_score']) + '\n'
-                        beauty_female = '> Beauty female score: 'str(image.faces[0].beauty['female_score']) + '\n'
+                        beauty_female = '> Beauty female score: ' + str(image.faces[0].beauty['female_score']) + '\n'
                         conclusion = '> This is just funny detection'
                         response = age + gender + beauty_male + beauty_female + conclusion
                     else:
