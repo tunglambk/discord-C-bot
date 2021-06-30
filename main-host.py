@@ -134,10 +134,12 @@ def isfloat(value):
   except ValueError:
     return False
 
-global start_face_detect
-start_face_detect = time.time()
-
 class MyClient(discord.Client):
+
+    def __init__(self):
+        super().__init__()
+        self.start_face_detect = time.time()
+
     async def on_ready(self):
         print('Logged on as', self.user)
 
@@ -183,10 +185,10 @@ class MyClient(discord.Client):
             if message.content.startswith('!face'):
 
                 current_time = time.time()
-                delta_time = current_time - start_face_detect
+                delta_time = current_time - self.start_face_detect
 
                 if delta_time >= 60:
-                    start_face_detect = time.time()
+                    self.start_face_detect = time.time()
                 else:
                     remain_time = 60 - delta_time
                     response = '> Tính năng này khả dụng trong ' + str(remain_time) + '(s) nữa'
