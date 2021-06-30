@@ -138,7 +138,7 @@ class MyClient(discord.Client):
 
     def __init__(self):
         super().__init__()
-        self.start_face_detect = time.time()
+        self.start_face_detect = time.time() - 30
 
     async def on_ready(self):
         print('Logged on as', self.user)
@@ -163,17 +163,24 @@ class MyClient(discord.Client):
 
             if message.content.startswith('?help') and not ark:
                 help = ''
-                soi_string =            '> **!soi @mention-member-1, @mention-member-2: show avatars**\n'
+
+                crypto_intro =          '> **:bitcoin::Neo::firo:CRYPTO**:gas::zen::dash~1:\n\n'
                 price_string =          '> **!price coin-1, coin-2**: check price of coins\n'
                 price_tlln_string =     '> **!price tlln**: check price of tlln coin list\n'
-                price_shitcoin_string = '> **!price shitcoin**: check price of some fucking shitcoin\n'
                 rate_string =           '> **!rate number coin-1 = ? coin-2**: check coin rate (Exp: !rate 10 neo = ? gas)\n'
+                price_shitcoin_string = '> **!price shitcoin**: check price of some fucking shitcoin\n'
+
+                space = '\n'
+
+                funny_intro =           '> :aPES2_HappyDance::aPES2_HappyDance::aPES2_HappyDance:**FUNNY**:aPES2_HappyDance::aPES2_HappyDance::aPES2_HappyDance: \n\n'
+                soi_string =            '> **!soi @mention-member-1, @mention-member-2: show avatars**\n'
+                face_string =           '> **!face @mention-member: avatar face detection**\n'
                 select_string =         '> **!select xxx, yyy, zzz**: select randomly\n'
-                soiguong_string =       '> **!xoa**: xoa đầu ếch\n'
-                xoadau_string =         '> **!soi gương**: trả về ảnh soi gương\n'
                 tho_string =            '> **!tho**: trả về 1 đoạn thơ\n'
-                help = soi_string + price_string + price_tlln_string + price_shitcoin_string + rate_string \
-                         + select_string + soiguong_string + xoadau_string + tho_string
+                fap_string =            '> **!fap** hoặc **!nofap**: show ảnh no fap\n'
+                help = crypto_intro + price_string + price_tlln_string + rate_string + price_shitcoin_string \
+                        + space + funny_intro + soi_string + face_string + select_string + tho_string + fap_string
+
                 await message.channel.send(help)
                 return
 
@@ -187,10 +194,10 @@ class MyClient(discord.Client):
                 current_time = time.time()
                 delta_time = current_time - self.start_face_detect
 
-                if delta_time >= 60:
+                if delta_time >= 30:
                     self.start_face_detect = time.time()
                 else:
-                    remain_time = 60 - delta_time
+                    remain_time = 30 - delta_time
                     response = '> Tính năng này khả dụng trong ' + str(remain_time) + '(s) nữa'
                     await message.channel.send(response)
                     return
@@ -234,15 +241,15 @@ class MyClient(discord.Client):
                 res = cg.get_coin_market_chart_by_id(coin, 'usd', 1)
                 print(res)
 
-            if message.content == '!soi gương':
-                response = 'https://media.discordapp.net/attachments/829403779513974824/859350808524488714/unknown.png'
-                await message.channel.send(response)
-                return
+            # if message.content == '!soi gương':
+            #     response = 'https://media.discordapp.net/attachments/829403779513974824/859350808524488714/unknown.png'
+            #     await message.channel.send(response)
+            #     return
 
-            if message.content.startswith('!xoa'):
-                response = 'https://media.discordapp.net/attachments/829403779513974824/859350641344249886/ech.gif'
-                await message.channel.send(response)
-                return
+            # if message.content.startswith('!xoa'):
+            #     response = 'https://media.discordapp.net/attachments/829403779513974824/859350641344249886/ech.gif'
+            #     await message.channel.send(response)
+            #     return
 
             if message.content.startswith('!soi'):
                 for user in message.mentions:
