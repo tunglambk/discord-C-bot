@@ -3,3 +3,4 @@ discord.py-self
 nltk
 tflearn
 tensorflow-cpu
+python-facepp

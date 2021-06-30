@@ -18,6 +18,8 @@ import pickle
 import os
 from tho import tho
 from nofap import nofap
+from facepplib import FacePP
+import time
 
 if os.path.isfile("data.pickle"):
     os.remove("data.pickle")
@@ -132,6 +134,8 @@ def isfloat(value):
   except ValueError:
     return False
 
+global start_face_detect
+start_face_detect = time.time()
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -165,13 +169,47 @@ class MyClient(discord.Client):
                 select_string =         '> **!select xxx, yyy, zzz**: select randomly\n'
                 soiguong_string =       '> **!xoa**: xoa đầu ếch\n'
                 xoadau_string =         '> **!soi gương**: trả về ảnh soi gương\n'
-                help = soi_string + price_string + price_tlln_string + price_shitcoin_string + rate_string + select_string + soiguong_string + xoadau_string
+                tho_string =            '> **!tho**: trả về 1 đoạn thơ\n'
+                help = soi_string + price_string + price_tlln_string + price_shitcoin_string + rate_string \
+                         + select_string + soiguong_string + xoadau_string + tho_string
                 await message.channel.send(help)
                 return
 
             if message.content.startswith('!tho'):
                 response = random.choice(tho)
                 await message.channel.send(response)
+                return
+
+            if message.content.startswith('!face'):
+
+                current_time = time.time()
+                delta_time = current_time - start_face_detect
+
+                if delta_time >= 60:
+                    start_face_detect = time.time()
+                else:
+                    remain_time = 60 - delta_time
+                    response = '> Tính năng này khả dụng trong ' + str(remain_time) + '(s) nữa'
+                    await message.channel.send(response)
+                    return
+
+                for user in message.mentions:
+                    userAvatar = user.avatar_url
+
+                    image = facepp.image.get(image_url=userAvatar,return_attributes=['gender', 'age', 'emotion', 'skinstatus', 'beauty'])
+
+                    if image.face_num > 0:
+                        age = '> Age: ' + str(image.faces[0].age['value']) + '\n'
+                        gender = '> Gender: ' + str(image.faces[0].gender['value']) + '\n'
+                        beauty_male = '> Beauty male score: ' + str(image.faces[0].beauty['male_score']) + '\n'
+                        beauty_female = '> Beauty female score: 'str(image.faces[0].beauty['female_score']) + '\n'
+                        conclusion = '> This is just funny detection'
+                        response = age + gender + beauty_male + beauty_female + conclusion
+                    else:
+                        response = '> Không tìm thấy khuôn mặt nào trong ảnh'
+
+                    await message.channel.send(response)
+                    return
                 return
             
             if message.content.startswith('!nofap') or message.content.startswith('!fap'):
@@ -294,6 +332,12 @@ class MyClient(discord.Client):
             
                 bot_response=random.choice(responses)
                 await message.channel.send('> ' + bot_response.format(message))
+
+
+api_key_face = os.getenv("FACE_KEY")
+api_secret_key_face = os.getenv("FACE_SECRET_KEY")
+global facepp
+facepp = FacePP(api_key=api_key_face, api_secret=api_secret_key_face)
 
 token = os.getenv("DISCORD_TOKEN")
 client = MyClient()
