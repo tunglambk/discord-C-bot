@@ -196,7 +196,7 @@ class MyClient(discord.Client):
                     return
 
                 for user in message.mentions:
-                    userAvatar = user.avatar_url
+                    userAvatar = str(user.avatar_url)
                     userAvatar = userAvatar.replace('webp', 'png')
                     print('userAvatar\n')
                     print(userAvatar)
