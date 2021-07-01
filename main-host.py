@@ -21,6 +21,7 @@ from nofap import nofap
 from truyencuoi import truyencuoi
 from facepplib import FacePP
 import time
+import requests
 
 if os.path.isfile("data.pickle"):
     os.remove("data.pickle")

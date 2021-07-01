@@ -4,3 +4,4 @@ nltk
 tflearn
 tensorflow-cpu
 python-facepp
+requests
