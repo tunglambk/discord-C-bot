@@ -147,19 +147,6 @@ class MyClient(discord.Client):
     async def on_message(self, message):
 
         #if message.channel.name=="test-con-bot-cua-tung":
-        if str(message.author.id) == '403040446118363138':
-
-            if "vừa tăng 5.00% trên sàn Binance" in message.content:
-                await message.add_reaction(message, ":stonk:815120736980959244")
-                await message.add_reaction(message, ":camap:805149996936462336")
-                await message.add_reaction(message, ":rocket:815121319774519316")
-                await message.add_reaction(message, "a:aPES_HappyClap:622096721408950295")
-            elif "vừa giảm 5.00% trên sàn Binance" in message.content:
-                await message.add_reaction(message, ":PES_NotStonks:800129909439725608")
-                await message.add_reaction(message, ":beartrap:846853630933991505")
-                await message.add_reaction(message, ":pray:814925096439119913")
-                await message.add_reaction(message, "a:aPES_SadDance:849698896031776768")
-            return
 
         satoshi_channel = {"spam-bot", "ark", "spam-human"}
         if message.channel.name in satoshi_channel:
@@ -185,14 +172,17 @@ class MyClient(discord.Client):
                 space = '> \n'
 
                 funny_intro =           '> **FUNNY**\n> \n'
+                talk_string =           '> `!talk abcxyz`: talk to me\n'
                 soi_string =            '> `!soi @mention-member-1, @mention-member-2`: show avatars\n'
                 face_string =           '> `!face @mention-member`: avatar face detection\n'
                 select_string =         '> `!select xxx, yyy, zzz`: select randomly\n'
                 tho_string =            '> `!tho`: trả về 1 đoạn thơ\n'
                 truyencuoi_string =     '> `!truyencuoi`: trả về 1 truyện cười\n'
                 fap_string =            '> `!fap` hoặc `!nofap`: show ảnh no fap\n'
+                note_string =           '> Chức năng !face và !talk chỉ là funny nhé các feng'
                 help = crypto_intro + price_string + price_tlln_string + rate_string + price_shitcoin_string \
-                        + space + funny_intro + soi_string + face_string + select_string + tho_string + truyencuoi_string + fap_string
+                        + space + funny_intro + talk_string + soi_string + face_string + select_string + tho_string + truyencuoi_string + fap_string \
+                        + space + note_string
 
                 await message.channel.send(help)
                 return
@@ -248,18 +238,6 @@ class MyClient(discord.Client):
                 response = random.choice(nofap)
                 await message.channel.send(response)
                 return
-
-            if message.content.startswith('!mk') and not ark:
-                content = message.content[3:].strip()
-                if content in coin_sp_names:
-                    coin = content
-                else:
-                    if content in coin_sp_symbols:
-                        coin = coin_dict[content]
-                    else:
-                        return
-                res = cg.get_coin_market_chart_by_id(coin, 'usd', 1)
-                print(res)
 
             # if message.content == '!soi gương':
             #     response = 'https://media.discordapp.net/attachments/829403779513974824/859350808524488714/unknown.png'
@@ -345,12 +323,44 @@ class MyClient(discord.Client):
                 await message.channel.send(string)
                 return
 
+            if message.content.startswith('!talk') and not ark:
+                content = message.content[5:].strip()
+                api_url = requests.get('https://simsumi.herokuapp.com/api?text={}&lang=vi'.format(content))
+                load_api = api_url.json()
+                sim_api = load_api['success']
+
+                if not sim_api:
+                    response = "> Dồi sao?"
+                elif str(sim_api) == "":
+                    response = "> Nhạt"
+                else:
+                    response = '> ' + f"{sim_api}"
+
+                await message.channel.send(response)
+                return
+
+
             if message.author == self.user:
                 return
 
 
             if (message.content[0] == ':') and (message.content[-1] == ':'):
                 return
+
+            if str(message.author.id) == '403040446118363138':
+
+                if "vừa tăng 5.00% trên sàn Binance" in message.content:
+                    await message.add_reaction(message, ":stonk:815120736980959244")
+                    await message.add_reaction(message, ":camap:805149996936462336")
+                    await message.add_reaction(message, ":rocket:815121319774519316")
+                    await message.add_reaction(message, "a:aPES_HappyClap:622096721408950295")
+                elif "vừa giảm 5.00% trên sàn Binance" in message.content:
+                    await message.add_reaction(message, ":PES_NotStonks:800129909439725608")
+                    await message.add_reaction(message, ":beartrap:846853630933991505")
+                    await message.add_reaction(message, ":pray:814925096439119913")
+                    await message.add_reaction(message, "a:aPES_SadDance:849698896031776768")
+                return
+
 
             inp = message.content
             result = model.predict([bag_of_words(inp, words)])[0]
