@@ -136,6 +136,19 @@ def isfloat(value):
   except ValueError:
     return False
 
+def talk(api_url, content):
+    api_url = requests.get(api_url.format(content))
+    load_api = api_url.json()
+    sim_api = load_api['success']
+
+    if not sim_api:
+        response = "> Dồi sao?"
+    elif str(sim_api) == "":
+        response = "> Nhạt"
+    else:
+        response = '> ' + f"{sim_api}"
+    return response
+
 class MyClient(discord.Client):
 
     def __init__(self):
@@ -326,17 +339,12 @@ class MyClient(discord.Client):
 
             if message.content.startswith('!talk') and not ark:
                 content = message.content[5:].strip()
-                api_url = requests.get('https://simsumi.herokuapp.com/api?text={}&lang=vi'.format(content))
-                load_api = api_url.json()
-                sim_api = load_api['success']
 
-                if not sim_api:
-                    response = "> Dồi sao?"
-                elif str(sim_api) == "":
-                    response = "> Nhạt"
-                else:
-                    response = '> ' + f"{sim_api}"
+                response = talk('https://simsumi.herokuapp.com/api?text={}&lang=vi', content)
 
+                if 'Limit 50 queries' in response:
+                    response = talk('https://api.simsimi.net/v1/?text={}&lang=vi_VN', content)
+                    
                 await message.channel.send(response)
                 return
 
