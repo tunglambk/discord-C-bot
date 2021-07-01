@@ -204,7 +204,9 @@ class MyClient(discord.Client):
 
             if message.content.startswith('!truyencuoi'):
                 response = random.choice(truyencuoi)
-                await message.channel.send(response)
+                message = await message.channel.send(response)
+                for emoji in (':vcl:837406003011649576', 'a:thisthis:837401903952429127', 'a:aPES4_HahaSex:726511347457720320'):
+                    await message.add_reaction(emoji)
                 return
 
             if message.content.startswith('!face'):
