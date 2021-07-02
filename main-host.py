@@ -168,6 +168,20 @@ class MyClient(discord.Client):
                 milosid = '<@776381590602514443>'
                 await message.channel.send(milosid)
 
+        if str(message.author.id) == '403040446118363138':
+
+            if "vừa tăng 5.00% trên sàn Binance" in message.content:
+                await message.add_reaction(":stonk:815120736980959244")
+                await message.add_reaction(":camap:805149996936462336")
+                await message.add_reaction(":rocket:815121319774519316")
+                await message.add_reaction("a:aPES_HappyClap:622096721408950295")
+            elif "vừa giảm 5.00% trên sàn Binance" in message.content:
+                await message.add_reaction(":PES_NotStonks:800129909439725608")
+                await message.add_reaction(":beartrap:846853630933991505")
+                await message.add_reaction(":pray:814925096439119913")
+                await message.add_reaction("a:aPES_SadDance:849698896031776768")
+            return
+
         if message.channel.name=="spam-bot":# or message.channel.name=="ark":
 
             ark = False
@@ -358,16 +372,6 @@ class MyClient(discord.Client):
 
             if str(message.author.id) == '403040446118363138':
 
-                if "vừa tăng 5.00% trên sàn Binance" in message.content:
-                    await message.add_reaction(message, ":stonk:815120736980959244")
-                    await message.add_reaction(message, ":camap:805149996936462336")
-                    await message.add_reaction(message, ":rocket:815121319774519316")
-                    await message.add_reaction(message, "a:aPES_HappyClap:622096721408950295")
-                elif "vừa giảm 5.00% trên sàn Binance" in message.content:
-                    await message.add_reaction(message, ":PES_NotStonks:800129909439725608")
-                    await message.add_reaction(message, ":beartrap:846853630933991505")
-                    await message.add_reaction(message, ":pray:814925096439119913")
-                    await message.add_reaction(message, "a:aPES_SadDance:849698896031776768")
                 return
 
 
