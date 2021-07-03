@@ -169,7 +169,7 @@ class MyClient(discord.Client):
                 milosid = '<@776381590602514443>'
                 await message.channel.send(milosid)
 
-        if message.channel.name=="ark" message.channel.name=="spam-bot":
+        if message.channel.name=="ark" or message.channel.name=="spam-bot":
             if message.content.startswith('!casau'):
                 self.enable_casau = not self.enable_casau
                 if self.enable_casau:
