@@ -154,6 +154,7 @@ class MyClient(discord.Client):
     def __init__(self):
         super().__init__()
         self.start_face_detect = time.time() - 30
+        self.enable_casau = True
 
     async def on_ready(self):
         print('Logged on as', self.user)
@@ -167,6 +168,26 @@ class MyClient(discord.Client):
             if 'satoshi' in message.content:
                 milosid = '<@776381590602514443>'
                 await message.channel.send(milosid)
+
+        if message.channel.name=="ark" message.channel.name=="spam-bot":
+            if message.content.startswith('!casau'):
+                self.enable_casau = not self.enable_casau
+                if self.enable_casau:
+                    response = '> Bắt đầu thả cá sấu vào chat của dơi trong box ARK'
+                else:
+                    response = '> Ngừng thả cá sấu vào chat của dơi trong box ARK'
+                await message.channel.send(response)
+                return
+
+
+            if message.content.startswith('!sex') or message.content.startswith('!sẽ'):
+                response = 'https://media.discordapp.net/attachments/859030316524896267/860911102082285608/unknown.png?width=1213&height=666'
+                await message.channel.send(response)
+                return
+
+
+        if str(message.author.id) == '420943647647989785' and self.enable_casau and message.channel.name=="ark":
+            await message.add_reaction(":casau:815685082710409237")
 
         if str(message.author.id) == '403040446118363138':
 
@@ -207,10 +228,13 @@ class MyClient(discord.Client):
                 tho_string =            '> `!tho`: trả về 1 đoạn thơ\n'
                 truyencuoi_string =     '> `!truyencuoi`: trả về 1 truyện cười\n'
                 fap_string =            '> `!fap` hoặc `!nofap`: show ảnh no fap\n'
+                casau_string =          '> `!casau`: Bật tắt thả emo cá sấu vào chat của dơi trong box ark\n'
+                se_string =             '> `!sex` or `!sẽ`: Xem sẽ (theo yêu cầu của dream)\n'
                 note_string =           '> Chức năng !face và !talk chỉ là funny nhé các feng'
+
                 help = crypto_intro + price_string + price_tlln_string + rate_string + price_shitcoin_string \
                         + space + funny_intro + talk_string + soi_string + face_string + select_string + tho_string + truyencuoi_string + fap_string \
-                        + space + note_string
+                        + casau_string + se_string + space + note_string
 
                 await message.channel.send(help)
                 return
