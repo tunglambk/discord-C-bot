@@ -155,6 +155,7 @@ class MyClient(discord.Client):
         super().__init__()
         self.start_face_detect = time.time() - 30
         self.enable_casau = True
+        self.enable_satoshi = True
 
     async def on_ready(self):
         print('Logged on as', self.user)
