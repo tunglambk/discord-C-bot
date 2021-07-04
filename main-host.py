@@ -202,9 +202,6 @@ class MyClient(discord.Client):
         if str(message.author.id) == '776381590602514443' and self.enable_satoshi and message.channel.name=="ark":
             await message.add_reaction("a:tenor_2:861069706371137537")
             await message.add_reaction(":Satoshi_Nakamoto:861071505802919936")
-        
-        if str(message.author.id) == '327451667568001024' and self.enable_satoshi and message.channel.name=="test-con-bot":
-            await message.add_reaction("a:tenor_2:861069706371137537")
 
         if str(message.author.id) == '403040446118363138':
 
