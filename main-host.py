@@ -154,8 +154,9 @@ class MyClient(discord.Client):
     def __init__(self):
         super().__init__()
         self.start_face_detect = time.time() - 30
-        self.enable_casau = True
-        self.enable_satoshi = True
+        self.enable_bot = True
+        self.enable_casau = False
+        self.enable_satoshi = False
         self.enable_soap = True
 
     async def on_ready(self):
@@ -164,6 +165,19 @@ class MyClient(discord.Client):
     async def on_message(self, message):
 
         #if message.channel.name=="test-con-bot-cua-tung":
+
+        if message.channel.id=="859030316524896267":
+            if message.content.startswith('!bot'):
+                self.enable_bot = not self.enable_bot
+                if self.enable_bot:
+                    response = '> Mở Bot'
+                else:
+                    response = '> Tắt Bot'
+                await message.channel.send(response)
+                return
+
+        if not self.enable_bot:
+            return
 
         satoshi_channel = {"spam-bot", "ark", "spam-human"}
         if message.channel.name in satoshi_channel:
@@ -198,7 +212,11 @@ class MyClient(discord.Client):
                     response = '> Ngừng thả emo soap vào chat có liên quan tới swap trong box ARK'
                 await message.channel.send(response)
                 return
-
+            
+            if message.content.startswith('!shisa'):
+                response = 'https://media.discordapp.net/attachments/859030316524896267/861580019696271360/image0.gif?width=1184&height=666'
+                await message.channel.send(response)
+                return
 
             if message.content.startswith('!sex') or message.content.startswith('!sẽ'):
                 response = 'https://media.discordapp.net/attachments/859030316524896267/860911102082285608/unknown.png?width=1213&height=666'
