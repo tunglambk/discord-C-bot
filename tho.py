@@ -22,13 +22,13 @@ tho = [
     "> Bỏ trăng gió lại cho đời\n> Bỏ ngang ngửa sóng giữa lời hẹn hoa\n> Bỏ người yêu bỏ bóng ma\n> Bỏ hình hài của tiên nga trên trời\n> Bây giờ riêng đối diện tôi,\n>  Còn hai con mắt khóc người một con",
     "> Và chúng tôi, một thứ quả trên đời\n> Bảy mươi tuổi mẹ đợi chờ được hái\n> Tôi hoảng sợ ngày bàn tay mẹ mỏi\n> Mình vẫn còn một thứ quả non xanh",
 
-    "> If water were kisses, I'd send you the sea\n If leaves were hugs, I'd send you a tree\n If nite was love ,I'd send you the stars\n But I can't send u my heart cause that where you are.",
-    "> I hoped that he would love me,\n And he has kissed my mouth,\n But I am like a stricken bird\n That cannot reach the south.\n For though I know he loves me,\n To-night my heart is sad;\n His kiss was not so wonderful\n As all the dreams I had.",
-    "> Here I am\n Dreaming of the times\n You held me tightly to your chest\n And life was a little less\n Conplicated",
-    "> When it hurts to look back\n and you are scared to look ahead\n look beside u I'll always be there for u?",
-    "> Because I could not stop for Death,\n He kindly stopped for me;\n The carriage held but just ourselves\n And Immortality.",
-    "> And all should cry, Beware! Beware!\n His flashing eyes, his floating hair!\n Weave a circle round him thrice,\n And close your eyes with holy dread\n For he on honey-dew hath fed,\n And drunk the milk of Paradise.",
-    "> She walks in beauty, like the night\n Of cloudless climes and starry skies;\n And all that’s best of dark and bright\n Meet in her aspect and her eyes;\n Thus mellowed to that tender light\n Which heaven to gaudy day denies.",
+    "> If water were kisses, I'd send you the sea\n> If leaves were hugs, I'd send you a tree\n> If nite was love ,I'd send you the stars\n> But I can't send u my heart cause that where you are.",
+    "> I hoped that he would love me,\n> And he has kissed my mouth,\n> But I am like a stricken bird\n> That cannot reach the south.\n> For though I know he loves me,\n> To-night my heart is sad;\n> His kiss was not so wonderful\n> As all the dreams I had.",
+    "> Here I am\n> Dreaming of the times\n> You held me tightly to your chest\n> And life was a little less\n> Conplicated",
+    "> When it hurts to look back\n> and you are scared to look ahead\n> look beside u I'll always be there for u?",
+    "> Because I could not stop for Death,\n> He kindly stopped for me;\n> The carriage held but just ourselves\n> And Immortality.",
+    "> And all should cry, Beware! Beware!\n> His flashing eyes, his floating hair!\n> Weave a circle round him thrice,\n> And close your eyes with holy dread\n> For he on honey-dew hath fed,\n> And drunk the milk of Paradise.",
+    "> She walks in beauty, like the night\n> Of cloudless climes and starry skies;\n> And all that’s best of dark and bright\n> Meet in her aspect and her eyes;\n> Thus mellowed to that tender light\n> Which heaven to gaudy day denies.",
 
     "> Thằng em,con chị bóc tem...\n> thư ,anh nó gửi để xem viết gì \n> Con em thì mải sờ ti...\n> vi,vừa mới tậu hãng gì ,mới tinh \n> Trai ,gái trong xóm làm tình ...\n> nguyện viên ,quét rác từ đình ra đê \n> Bà chị hàng xóm đang phê ...\n> bình thằng con nhỏ ,ham chơi tối ngày \n> Ông anh hàng xóm mải quay ...\n> tay cái đầu nổ xem cày được không \n> Tôi thì đang mải nhìn mông ...\n> lung linh dòng nước con sông quê nhà\n> Cô em hàng xóm rửa cà ...\n> dái dê để tối cả nhà cùng ăn"
 
