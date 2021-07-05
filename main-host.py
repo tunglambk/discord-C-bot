@@ -218,7 +218,7 @@ class MyClient(discord.Client):
             for keyword in soap_keywords:
                 if keyword in message.content:
                     await message.add_reaction(":PES3_Soap:783754543346221116")
-                    await message.add_reaction(":soap:")
+                    await message.add_reaction("🧼")
                 return
 
 
