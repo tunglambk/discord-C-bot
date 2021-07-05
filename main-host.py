@@ -219,7 +219,7 @@ class MyClient(discord.Client):
                 if keyword in message.content:
                     await message.add_reaction(":PES3_Soap:783754543346221116")
                     await message.add_reaction("🧼")
-                return
+                    return
 
 
         if str(message.author.id) == '403040446118363138':
