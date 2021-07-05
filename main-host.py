@@ -156,6 +156,7 @@ class MyClient(discord.Client):
         self.start_face_detect = time.time() - 30
         self.enable_casau = True
         self.enable_satoshi = True
+        self.enable_soap = True
 
     async def on_ready(self):
         print('Logged on as', self.user)
@@ -189,6 +190,15 @@ class MyClient(discord.Client):
                 await message.channel.send(response)
                 return
 
+            if message.content.startswith('!soap'):
+                self.enable_soap = not self.enable_soap
+                if self.enable_satoshi:
+                    response = '> Bắt đầu thả emo soap vào chat có liên quan tới swap trong box ARK'
+                else:
+                    response = '> Ngừng thả emo soap vào chat có liên quan tới swap trong box ARK'
+                await message.channel.send(response)
+                return
+
 
             if message.content.startswith('!sex') or message.content.startswith('!sẽ'):
                 response = 'https://media.discordapp.net/attachments/859030316524896267/860911102082285608/unknown.png?width=1213&height=666'
@@ -202,6 +212,15 @@ class MyClient(discord.Client):
         if str(message.author.id) == '776381590602514443' and self.enable_satoshi and message.channel.name=="ark":
             await message.add_reaction("a:tenor_2:861069706371137537")
             await message.add_reaction(":Satoshi_Nakamoto:861071505802919936")
+
+        if self.enable_soap and message.channel.name=="ark":
+            soap_keywords = ['soap', 'swap', 'xì quáp', 'xà bông', 'xà phòng']
+            for keyword in soap_keywords:
+                if keyword in message.content:
+                    await message.add_reaction(":PES3_Soap:783754543346221116")
+                    await message.add_reaction(":soap:")
+                return
+
 
         if str(message.author.id) == '403040446118363138':
 
