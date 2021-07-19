@@ -166,7 +166,7 @@ class MyClient(discord.Client):
 
     async def on_message(self, message):
 
-        if not message.guild:
+        if not isinstance(message.channel, discord.DMChannel):
 
             if str(message.channel.id) == "829403779513974824" and str(message.author.id) == "546463922287411230":
                 if "The Giveaway of" in message.content and "has ended!" in message.content:
