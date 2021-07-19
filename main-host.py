@@ -12,16 +12,16 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 # import numpy as np 
 # import tflearn
 # import tensorflow as tf
-# import random
-# import json
-# import pickle
-# import os
-# from tho import tho
-# from nofap import nofap
-# from truyencuoi import truyencuoi
+import random
+#import json
+#import pickle
+import os
+from tho import tho
+from nofap import nofap
+from truyencuoi import truyencuoi
 from facepplib import FacePP
-# import time
-# import requests
+import time
+import requests
 
 # if os.path.isfile("data.pickle"):
 #     os.remove("data.pickle")
