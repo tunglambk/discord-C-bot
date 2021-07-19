@@ -168,7 +168,8 @@ class MyClient(discord.Client):
 
         if not isinstance(message.channel, discord.DMChannel):
 
-            if str(message.channel.id) == "829403779513974824" and str(message.author.id) == "546463922287411230":
+            if message.channel.name=="ark":
+                print(message.content)
                 if "The Giveaway of" in message.content and "has ended!" in message.content:
                     print('Giveaway')
                     amount = message.content.split('to the Winners of', 1)[1]
@@ -240,6 +241,7 @@ class MyClient(discord.Client):
             if message.channel.name=="ark" or message.channel.name=="spam-bot" or message.channel.name=="test-con-bot":
 
                 if message.content.startswith('!toprain'):
+                    print('Top rain: {}'.format(self.top_rain))
                     self.top_rain.sort()
                     response = '> Ông trùm hứng mưa:\n'
                     max_len = min(5, len(self.top_rain))
@@ -248,6 +250,7 @@ class MyClient(discord.Client):
                     await message.channel.send(response)
 
                 if message.content.startswith('!topga'):
+                    print('Top ga: {}'.format(self.top_ga))
                     self.top_ga.sort()
                     response = '> Vua tay nhanh hơn não:\n'
                     max_len = min(5, len(self.top_ga))
