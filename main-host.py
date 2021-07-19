@@ -170,6 +170,7 @@ class MyClient(discord.Client):
 
             if str(message.channel.id) == "829403779513974824" and str(message.author.id) == "546463922287411230":
                 if "The Giveaway of" in message.content and "has ended!" in message.content:
+                    print('Giveaway')
                     amount = message.content.split('to the Winners of', 1)[1]
                     amount = amount.split('ark each', 1)[0]
                     amount = float(amount)
@@ -189,12 +190,15 @@ class MyClient(discord.Client):
                         if is_new_user:
                             new_user = [amount, display_name, id]
                             self.top_ga.append(new_user)
+                    print(self.top_ga)
                     return
 
                 elif "made it rain!" in message.content:
+                    print('Hứng mưa')
                     amount = message.content.split('each received', 1)[1]
                     amount = amount.split('Ѧ!', 1)[0]
                     amount = float(amount)
+                    print('So ark: {}'.format(amount))
                     for user in message.mentions:
                         display_name = user.display_name
                         id = user.id
@@ -210,6 +214,7 @@ class MyClient(discord.Client):
                         if is_new_user:
                             new_user = [amount, display_name, id]
                             self.top_rain.append(new_user)
+                    print(self.top_rain)
                     return
 
 
