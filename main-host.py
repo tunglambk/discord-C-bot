@@ -168,7 +168,7 @@ class MyClient(discord.Client):
 
         #if message.channel.name=="test-con-bot-cua-tung":
         
-        if str(message.server.id) == "769800684056215572":# str(message.author.id) == "546463922287411230":
+        if str(message.channel.id) == "829403779513974824" and str(message.author.id) == "546463922287411230":
             if "The Giveaway of" in message.content and "has ended!" in message.content:
                 amount = message.content.split('to the Winners of', 1)[1]
                 amount = amount.split('ark each', 1)[0]
