@@ -158,6 +158,8 @@ class MyClient(discord.Client):
         self.enable_casau = False
         self.enable_satoshi = False
         self.enable_soap = True
+        self.top_ga =  list()
+        self.top_rain = list()
 
     async def on_ready(self):
         print('Logged on as', self.user)
@@ -165,6 +167,50 @@ class MyClient(discord.Client):
     async def on_message(self, message):
 
         #if message.channel.name=="test-con-bot-cua-tung":
+        if str(message.guild.id) == "769800684056215572" and str(message.author.id) == "546463922287411230":
+            if "The Giveaway of" in message.content and "has ended!" in message.content:
+                amount = message.content.split('to the Winners of', 1)[1]
+                amount = amount.split('ark each', 1)[0]
+                amount = float(amount)
+
+                for user in message.mentions:
+                    display_name = str(user.display_name)
+                    id = str(user.id)
+                    is_new_user = True
+
+                    for i, item in enumerate(self.top_ga):
+                        if id == item[2]:
+                            self.top_ga[i][0] += amount
+                            is_new_user = False
+                            if self.top_ga[i][1] != display_name:
+                                self.top_ga[i][1] = display_name
+                            break
+                    if is_new_user:
+                        new_user = [amount, display_name, id]
+                        self.top_ga.append(new_user)
+                return
+
+            elif "made it rain!" in message.content:
+                amount = message.content.split('each received', 1)[1]
+                amount = amount.split('Ѧ!', 1)[0]
+                amount = float(amount)
+                for user in message.mentions:
+                    display_name = user.display_name
+                    id = user.id
+                    is_new_user = True
+
+                    for i, item in enumerate(self.top_rain):
+                        if id == item[2]:
+                            self.top_rain[i][0] += amount
+                            is_new_user = False
+                            if self.top_rain[i][1] != display_name:
+                                self.top_rain[i][1] = display_name
+                            break
+                    if is_new_user:
+                        new_user = [amount, display_name, id]
+                        self.top_rain.append(new_user)
+                return
+
 
         if message.channel.id=="859030316524896267":
             if message.content.startswith('!bot'):
@@ -186,6 +232,27 @@ class MyClient(discord.Client):
                 await message.channel.send(milosid)
 
         if message.channel.name=="ark" or message.channel.name=="spam-bot" or message.channel.name=="test-con-bot":
+
+            if message.content.startswith('!toprain'):
+                self.top_rain.sort()
+                response = '> Ông trùm hứng mưa:\n'
+                max_len = min(5, len(self.top_rain))
+                for i in range(max_len):
+                    response = response + '> ' + str(i+1) + '. ' + self.top_rain[i][1] + ' - ' + str(self.top_rain[i][0]) + 'ark' + '\n'
+                await message.channel.send(response)
+
+            if message.content.startswith('!topga'):
+                self.top_ga.sort()
+                response = '> Vua tay nhanh hơn não:\n'
+                max_len = min(5, len(self.top_ga))
+                for i in range(max_len):
+                    response = response + '> ' + str(i+1) + '. ' + self.top_ga[i][1] + ' - ' + str(self.top_ga[i][0]) + 'ark' + '\n'
+                await message.channel.send(response)
+
+            if message.content.startswith('!topga'):
+                self.top_ga.sort()
+                response = ''
+
             if message.content.startswith('!casaudoi'):
                 self.enable_casau = not self.enable_casau
                 if self.enable_casau:
