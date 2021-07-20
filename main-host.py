@@ -175,7 +175,6 @@ class MyClient(discord.Client):
                 embeds = after.embeds
                 for embed in embeds:
                     embed = embed.to_dict()
-                    print(embed)
                     if 'The Giveaway of' in embed['title'] and 'has ended' in embed['title']:
                         description = embed['description']
                         description = description.split('**')
@@ -223,11 +222,9 @@ class MyClient(discord.Client):
 
             if message.channel.name=="ark" and str(message.author.id) == "546463922287411230":
                 
-                print('Content: {}'.format(message.content))
                 embeds = message.embeds # return list of embeds
                 for embed in embeds:
                     embed = embed.to_dict()
-                    #print(embed)
                     if 'made it rain' in embed['title']:
                         description = embed['description']
                         description = description.split('**')
@@ -288,7 +285,6 @@ class MyClient(discord.Client):
             if message.channel.name=="ark" or message.channel.name=="spam-bot" or message.channel.name=="test-con-bot":
 
                 if message.content.startswith('!toprain'):
-                    print('Top rain: {}'.format(self.top_rain))
                     self.top_rain.sort(reverse = True)
                     response = '> Ông trùm hứng mưa:\n'
                     max_len = min(5, len(self.top_rain))
@@ -297,7 +293,6 @@ class MyClient(discord.Client):
                     await message.channel.send(response)
 
                 if message.content.startswith('!topga'):
-                    print('Top ga: {}'.format(self.top_ga))
                     self.top_ga.sort(reverse = True)
                     response = '> Vua tay nhanh hơn não:\n'
                     max_len = min(5, len(self.top_ga))
@@ -306,7 +301,6 @@ class MyClient(discord.Client):
                     await message.channel.send(response)
 
                 if message.content.startswith('!richrain'):
-                    print('Rich rain: {}'.format(self.top_rich_rain))
                     self.top_rich_rain.sort(reverse = True)
                     response = '> Hô phong hoán vũ:\n'
                     max_len = min(5, len(self.top_rich_rain))
@@ -316,7 +310,6 @@ class MyClient(discord.Client):
 
 
                 if message.content.startswith('!richga'):
-                    print('Rich ga: {}'.format(self.top_rich_ga))
                     self.top_rich_ga.sort(reverse = True)
                     response = '> Thần tài đến thần tài đến hãy giang tay đón mời:\n'
                     max_len = min(5, len(self.top_rich_ga))
@@ -418,11 +411,16 @@ class MyClient(discord.Client):
                     truyencuoi_string =     '> `!truyencuoi`: trả về 1 truyện cười\n'
                     fap_string =            '> `!fap` hoặc `!nofap`: show ảnh no fap\n'
                     se_string =             '> `!sex` or `!sẽ`: Xem sẽ (theo yêu cầu của dream)\n'
+                    top_ga_string =         '> `!topga`: Xem top members nhận GA trong box ark\n'
+                    top_rain_string =       '> `!toprain`: Xem top members nhân rain trong box ark\n'
+                    top_rich_ga_string =    '> `!richga`: Xem top mạnh thường quân GA trong box ark\n'
+                    top_rich_rain_string =  '> `!richrain`: Xem top mạnh thường quân tạo rain trong box ark\n'
                     note_string =           '> Chức năng !face và !talk chỉ là funny nhé các feng'
+
 
                     help = crypto_intro + price_string + price_tlln_string + rate_string + price_shitcoin_string \
                             + space + funny_intro + talk_string + soi_string + face_string + select_string + tho_string + truyencuoi_string + fap_string \
-                            + se_string + space + note_string
+                            + se_string + space + top_ga_string + top_rain_string + top_rich_ga_string + top_rich_rain_string + note_string
 
                     await message.channel.send(help)
                     return
@@ -455,8 +453,6 @@ class MyClient(discord.Client):
                     for user in message.mentions:
                         userAvatar = str(user.avatar_url)
                         userAvatar = userAvatar.replace('.webp', '.png').replace('.gif', '.png')
-                        print('userAvatar\n')
-                        print(userAvatar)
 
                         image = facepp.image.get(image_url=userAvatar,return_attributes=['gender', 'age', 'emotion', 'skinstatus', 'beauty'])
 
@@ -509,8 +505,6 @@ class MyClient(discord.Client):
                                 price_2 = cg.get_price(ids=coin, vs_currencies='usd')
                             else:
                                 return
-                        print(price_1)
-                        print(price_2)
                         price_1 =  float(list(price_1.values())[0]['usd'])
                         price_2 =  float(list(price_2.values())[0]['usd'])
                         rate = round(price_1/price_2 * num_1, 3)
@@ -543,10 +537,8 @@ class MyClient(discord.Client):
                                 coin_lst_name.append(coin_dict[item])
                         if item in coin_sp_names:
                             coin_lst_name.append(coin_dict[item])
-                    print(coin_lst_name)
                     coin = ','.join(coin_lst_name)
                     price = cg.get_price(ids=coin, vs_currencies='usd')
-                    print(price)
                     string = ''
                     for item in price:
                         string += '> ' + item + ' = ' + str(price[item]['usd']) + ' usd\n'
