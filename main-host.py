@@ -171,7 +171,7 @@ class MyClient(discord.Client):
         if not isinstance(message.channel, discord.DMChannel):
 
             if message.channel.name=="ark": #and str(message.author.id) == "546463922287411230":
-                await data = self.fetch_user_profile(message.author.id)
+                data = self.fetch_user_profile(message.author.id)
                 print(data)
                 return
                 #print('Content: {}'.format(message.content))
