@@ -207,10 +207,10 @@ class MyClient(discord.Client):
                         for i, item in enumerate(self.top_rich_ga):
                             if rich_person == item[1]:
                                 is_new_rich_person = False
-                                self.top_rich_ga[i][0] += amount
+                                self.top_rich_ga[i][0] += amount * len(lucky_ids)
                                 break
                         if is_new_rich_person:
-                            new_user = [amount, rich_person]
+                            new_user = [amount * len(lucky_ids), rich_person]
                             self.top_rich_ga.append(new_user)
 
                 return
@@ -259,10 +259,10 @@ class MyClient(discord.Client):
                         for i, item in enumerate(self.top_rich_rain):
                             if rich_person == item[1]:
                                 is_new_rich_person = False
-                                self.top_rich_rain[i][0] += amount
+                                self.top_rich_rain[i][0] += amount * len(lucky_ids)
                                 break
                         if is_new_rich_person:
-                            new_user = [amount, rich_person]
+                            new_user = [amount * len(lucky_ids), rich_person]
                             self.top_rich_rain.append(new_user)
                 return
 
