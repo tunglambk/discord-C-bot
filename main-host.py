@@ -168,7 +168,7 @@ class MyClient(discord.Client):
 
         if not isinstance(message.channel, discord.DMChannel):
 
-            if message.channel.name=="ark" and message.author.id == "546463922287411230":
+            if message.channel.name=="ark" and str(message.author.id) == "546463922287411230":
                 print('Content: {}'.format(message.content))
                 embeds = message.embeds # return list of embeds
                 for embed in embeds:
