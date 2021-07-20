@@ -164,13 +164,13 @@ class MyClient(discord.Client):
     async def on_ready(self):
         print('Logged on as', self.user)
 
-    async def on_message_edit(after):
+    async def on_message_edit(self, before, after):
 
         if not isinstance(after.channel, discord.DMChannel):
 
             if after.channel.name == "spam-bot":# and str(message.author.id) == "546463922287411230":
 
-                #print(before.content)
+                print(before.content)
                 print(after.content)
                 return
 
