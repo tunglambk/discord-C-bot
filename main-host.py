@@ -160,6 +160,8 @@ class MyClient(discord.Client):
         self.enable_soap = True
         self.top_ga =  list()
         self.top_rain = list()
+        self.top_rich_rain = list()
+        self.top_rich_ga = list()
 
     async def on_ready(self):
         print('Logged on as', self.user)
@@ -174,8 +176,41 @@ class MyClient(discord.Client):
                 for embed in embeds:
                     embed = embed.to_dict()
                     print(embed)
+                    if 'The Giveaway of' in embed['title'] and 'has ended' in embed['title']:
+                        description = embed['description']
+                        description = description.split('**')
+                        amount = float(description[3])
 
-                    #all of you were too slow
+                        rich_person = embed['author']['name']
+
+                        if 'all of you were too slow' in embed['fields'][0]['value']:
+                            return
+
+                        lucky_ids = embed['fields'][0]['value'].split(' ')
+                        for id in lucky_ids:
+                            is_new_user = True
+                            profile = await self.fetch_user_profile(id)
+                            name = profile.user.name
+
+                            for i, item in enumerate(self.top_ga):
+                                if name == item[1]:
+                                    self.top_ga[i][0] += amount
+                                    is_new_user = False
+                                    break
+                            if is_new_user:
+                                new_user = [amount, name]
+                                self.top_ga.append(new_user)
+
+                        is_new_rich_person = True
+                        for i, item in enumerate(self.top_rich_ga):
+                            if rich_person == item[1]:
+                                is_new_rich_person = False
+                                self.top_rich_ga[i][0] += amount
+                                break
+                        if is_new_rich_person:
+                            new_user = [amount, rich_person]
+                            self.top_rich_ga.append(new_user)
+
                 return
 
 
@@ -190,19 +225,15 @@ class MyClient(discord.Client):
                 embeds = message.embeds # return list of embeds
                 for embed in embeds:
                     embed = embed.to_dict()
-                    print(embed)
+                    #print(embed)
                     if 'made it rain' in embed['title']:
                         description = embed['description']
                         description = description.split('**')
                         amount = float(description[3])
 
-                        print('rain amount: {}'.format(amount))
-
                         title = embed['title']
                         title = title.split('**')
                         rich_person = title[1]
-
-                        print('rain rich_person: {}'.format(rich_person))
 
                         lucky_ids = embed['fields'][0]['value'].split(' ')
                         for i, item in enumerate(lucky_ids):
@@ -221,8 +252,17 @@ class MyClient(discord.Client):
                             if is_new_user:
                                 new_user = [amount, name]
                                 self.top_rain.append(new_user)
-                        print(self.top_rain)
-                        return
+
+                        is_new_rich_person = True
+                        for i, item in enumerate(self.top_rich_rain):
+                            if rich_person == item[1]:
+                                is_new_rich_person = False
+                                self.top_rich_rain[i][0] += amount
+                                break
+                        if is_new_rich_person:
+                            new_user = [amount, rich_person]
+                            self.top_rich_rain.append(new_user)
+                return
 
             if str(message.channel.id) == "859030316524896267":
                 if message.content.startswith('!bot'):
@@ -263,9 +303,24 @@ class MyClient(discord.Client):
                         response = response + '> ' + str(i+1) + '. **' + self.top_ga[i][1] + '** - ' + str(self.top_ga[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
 
-                if message.content.startswith('!topga'):
-                    self.top_ga.sort()
-                    response = ''
+                if message.content.startswith('!richrain'):
+                    print('Rich rain: {}'.format(self.top_rich_rain))
+                    self.top_rich_rain.sort(reverse = True)
+                    response = '> Hô phong hoán vũ:\n'
+                    max_len = min(5, len(self.top_rich_rain))
+                    for i in range(max_len):
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_rain[i][1] + '** - ' + str(self.top_rich_rain[i][0]) + ' ark' + '\n'
+                    await message.channel.send(response)
+
+
+                if message.content.startswith('!richga'):
+                    print('Rich ga: {}'.format(self.top_rich_ga))
+                    self.top_rich_ga.sort(reverse = True)
+                    response = '> Thần tài đến thần tài đến hãy giang tay đón mời:\n'
+                    max_len = min(5, len(self.top_rich_ga))
+                    for i in range(max_len):
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_ga[i][1] + '** - ' + str(self.top_rich_ga[i][0]) + ' ark' + '\n'
+                    await message.channel.send(response)
 
                 if message.content.startswith('!casaudoi'):
                     self.enable_casau = not self.enable_casau
