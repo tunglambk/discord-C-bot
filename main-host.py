@@ -176,6 +176,7 @@ class MyClient(discord.Client):
                 print('Content: {}'.format(message.content))
                 embeds = message.embeds # return list of embeds
                 for embed in embeds:
+                    embed = embed.to_dict()
                     print(embed)
                     if 'made it rain' in embed['title']:
                         description = embed['description']
