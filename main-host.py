@@ -197,29 +197,29 @@ class MyClient(discord.Client):
                 #     print(self.top_ga)
                 #     return
 
-                elif "made it rain!" in message.content:
-                    print('Hứng mưa')
-                    amount = message.content.split('each received', 1)[1]
-                    amount = amount.split('Ѧ!', 1)[0]
-                    amount = float(amount)
-                    print('So ark: {}'.format(amount))
-                    for user in message.mentions:
-                        display_name = user.display_name
-                        id = user.id
-                        is_new_user = True
+                # elif "made it rain!" in message.content:
+                #     print('Hứng mưa')
+                #     amount = message.content.split('each received', 1)[1]
+                #     amount = amount.split('Ѧ!', 1)[0]
+                #     amount = float(amount)
+                #     print('So ark: {}'.format(amount))
+                #     for user in message.mentions:
+                #         display_name = user.display_name
+                #         id = user.id
+                #         is_new_user = True
 
-                        for i, item in enumerate(self.top_rain):
-                            if id == item[2]:
-                                self.top_rain[i][0] += amount
-                                is_new_user = False
-                                if self.top_rain[i][1] != display_name:
-                                    self.top_rain[i][1] = display_name
-                                break
-                        if is_new_user:
-                            new_user = [amount, display_name, id]
-                            self.top_rain.append(new_user)
-                    print(self.top_rain)
-                    return
+                #         for i, item in enumerate(self.top_rain):
+                #             if id == item[2]:
+                #                 self.top_rain[i][0] += amount
+                #                 is_new_user = False
+                #                 if self.top_rain[i][1] != display_name:
+                #                     self.top_rain[i][1] = display_name
+                #                 break
+                #         if is_new_user:
+                #             new_user = [amount, display_name, id]
+                #             self.top_rain.append(new_user)
+                #     print(self.top_rain)
+                #     return
 
 
             if message.channel.id=="859030316524896267":
