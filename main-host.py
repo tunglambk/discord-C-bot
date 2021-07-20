@@ -170,8 +170,7 @@ class MyClient(discord.Client):
 
         if not isinstance(message.channel, discord.DMChannel):
 
-            if message.channel.name=="ark": #and str(message.author.id) == "546463922287411230":
-                data = await self.fetch_user_profile(message.author.id)
+            if message.channel.name=="ark" and str(message.author.id) == "546463922287411230":
                 
                 print('Content: {}'.format(message.content))
                 embeds = message.embeds # return list of embeds
@@ -190,6 +189,28 @@ class MyClient(discord.Client):
                         rich_person = title[1]
 
                         print('rain rich_person: {}'.format(rich_person))
+
+                        lucky_ids = embed['fields'][0]['value'].split(' ')
+                        for i, item in enumerate(lucky_ids):
+                            lucky_ids[i] = int(item[2:-1])
+
+                        for id in lucky_ids:
+                            is_new_user = True
+                            data = await self.fetch_user_profile(id)
+                            name = data.name
+
+                            for i, item in enumerate(self.top_rain):
+                                if name == item[1]:
+                                    self.top_rain[i][0] += amount
+                                    is_new_user = False
+                                    break
+                            if is_new_user:
+                                new_user = [amount, name]
+                                self.top_rain.append(new_user)
+                        print(self.top_rain)
+                        return
+
+
 
                         #a['fields'][0]['value'][2:-1]
 
