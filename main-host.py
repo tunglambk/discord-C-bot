@@ -187,6 +187,8 @@ class MyClient(discord.Client):
                             return
 
                         lucky_ids = embed['fields'][0]['value'].split(' ')
+                        for i, item in enumerate(lucky_ids):
+                            lucky_ids[i] = int(item[2:-1])
                         for id in lucky_ids:
                             is_new_user = True
                             profile = await self.fetch_user_profile(id)
