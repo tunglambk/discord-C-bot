@@ -168,31 +168,34 @@ class MyClient(discord.Client):
 
         if not isinstance(message.channel, discord.DMChannel):
 
-            if message.channel.name=="ark":
-                print(message.content)
-                if "The Giveaway of" in message.content and "has ended!" in message.content:
-                    print('Giveaway')
-                    amount = message.content.split('to the Winners of', 1)[1]
-                    amount = amount.split('ark each', 1)[0]
-                    amount = float(amount)
+            if message.channel.name=="ark" and message.author.id == "546463922287411230":
+                print('Content: {}'.format(message.content))
+                embeds = message.embeds # return list of embeds
+                for embed in embeds:
+                    print('Embeds: {}'.format(embed.to_dict()))
+                # if "The Giveaway of" in message.content and "has ended!" in message.content:
+                #     print('Giveaway')
+                #     amount = message.content.split('to the Winners of', 1)[1]
+                #     amount = amount.split('ark each', 1)[0]
+                #     amount = float(amount)
 
-                    for user in message.mentions:
-                        display_name = str(user.display_name)
-                        id = str(user.id)
-                        is_new_user = True
+                #     for user in message.mentions:
+                #         display_name = str(user.display_name)
+                #         id = str(user.id)
+                #         is_new_user = True
 
-                        for i, item in enumerate(self.top_ga):
-                            if id == item[2]:
-                                self.top_ga[i][0] += amount
-                                is_new_user = False
-                                if self.top_ga[i][1] != display_name:
-                                    self.top_ga[i][1] = display_name
-                                break
-                        if is_new_user:
-                            new_user = [amount, display_name, id]
-                            self.top_ga.append(new_user)
-                    print(self.top_ga)
-                    return
+                #         for i, item in enumerate(self.top_ga):
+                #             if id == item[2]:
+                #                 self.top_ga[i][0] += amount
+                #                 is_new_user = False
+                #                 if self.top_ga[i][1] != display_name:
+                #                     self.top_ga[i][1] = display_name
+                #                 break
+                #         if is_new_user:
+                #             new_user = [amount, display_name, id]
+                #             self.top_ga.append(new_user)
+                #     print(self.top_ga)
+                #     return
 
                 elif "made it rain!" in message.content:
                     print('Hứng mưa')
