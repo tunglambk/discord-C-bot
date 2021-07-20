@@ -168,10 +168,14 @@ class MyClient(discord.Client):
 
         if not isinstance(after.channel, discord.DMChannel):
 
-            if after.channel.name == "spam-bot":# and str(message.author.id) == "546463922287411230":
+            if after.channel.name == "ark" and str(message.author.id) == "546463922287411230":
 
-                print(before.content)
-                print(after.content)
+                embeds = after.embeds
+                for embed in embeds:
+                    embed = embed.to_dict()
+                    print(embed)
+
+                    #all of you were too slow
                 return
 
 
