@@ -284,37 +284,37 @@ class MyClient(discord.Client):
 
             if message.channel.name=="ark" or message.channel.name=="spam-bot" or message.channel.name=="test-con-bot":
 
-                if message.content.startswith('!toprain'):
+                if message.content == '!toprain':
                     self.top_rain.sort(reverse = True)
                     response = '> Ông trùm hứng mưa:\n'
                     max_len = min(5, len(self.top_rain))
                     for i in range(max_len):
-                        response = response + '> ' + str(i+1) + '. **' + self.top_rain[i][1] + '** - ' + str(self.top_rain[i][0]) + ' ark' + '\n'
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rain[i][1] + '** - {:0.2f}'.format(self.top_rain[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
 
-                if message.content.startswith('!topga'):
+                if message.content == '!topga':
                     self.top_ga.sort(reverse = True)
                     response = '> Vua tay nhanh hơn não:\n'
                     max_len = min(5, len(self.top_ga))
                     for i in range(max_len):
-                        response = response + '> ' + str(i+1) + '. **' + self.top_ga[i][1] + '** - ' + str(self.top_ga[i][0]) + ' ark' + '\n'
+                        response = response + '> ' + str(i+1) + '. **' + self.top_ga[i][1] + '** - {:0.2f}'.format(self.top_ga[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
 
-                if message.content.startswith('!richrain'):
+                if message.content == '!richrain':
                     self.top_rich_rain.sort(reverse = True)
                     response = '> Hô phong hoán vũ:\n'
                     max_len = min(5, len(self.top_rich_rain))
                     for i in range(max_len):
-                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_rain[i][1] + '** - ' + str(self.top_rich_rain[i][0]) + ' ark' + '\n'
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_rain[i][1] + '** - {:0.2f}'.format(self.top_rich_rain[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
 
 
-                if message.content.startswith('!richga'):
+                if message.content == '!richga':
                     self.top_rich_ga.sort(reverse = True)
                     response = '> Thần tài đến thần tài đến hãy giang tay đón mời:\n'
                     max_len = min(5, len(self.top_rich_ga))
                     for i in range(max_len):
-                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_ga[i][1] + '** - ' + str(self.top_rich_ga[i][0]) + ' ark' + '\n'
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_ga[i][1] + '** - {:0.2f}'.format(self.top_rich_ga[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
 
                 if message.content.startswith('!casaudoi'):
