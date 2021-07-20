@@ -178,7 +178,7 @@ class MyClient(discord.Client):
                     if 'The Giveaway of' in embed['title'] and 'has ended' in embed['title']:
                         description = embed['description']
                         description = description.split('**')
-                        amount = float(description[3])
+                        amount = round(float(description[3]), 2)
 
                         rich_person = embed['author']['name']
 
@@ -228,7 +228,7 @@ class MyClient(discord.Client):
                     if 'made it rain' in embed['title']:
                         description = embed['description']
                         description = description.split('**')
-                        amount = float(description[3])
+                        amount = round(float(description[3]), 2)
 
                         title = embed['title']
                         title = title.split('**')
