@@ -164,7 +164,17 @@ class MyClient(discord.Client):
     async def on_ready(self):
         print('Logged on as', self.user)
 
-    
+    async def on_message_edit(before, after):
+
+        if not isinstance(after.channel, discord.DMChannel):
+
+            if after.channel.name == "spam-bot":# and str(message.author.id) == "546463922287411230":
+
+                print(before.content)
+                print(after.content)
+                return
+
+
 
     async def on_message(self, message):
 
@@ -210,64 +220,7 @@ class MyClient(discord.Client):
                         print(self.top_rain)
                         return
 
-
-
-                        #a['fields'][0]['value'][2:-1]
-
-
-                        #await.self.client.
-                
-
-                # if "The Giveaway of" in message.content and "has ended!" in message.content:
-                #     print('Giveaway')
-                #     amount = message.content.split('to the Winners of', 1)[1]
-                #     amount = amount.split('ark each', 1)[0]
-                #     amount = float(amount)
-
-                #     for user in message.mentions:
-                #         display_name = str(user.display_name)
-                #         id = str(user.id)
-                #         is_new_user = True
-
-                #         for i, item in enumerate(self.top_ga):
-                #             if id == item[2]:
-                #                 self.top_ga[i][0] += amount
-                #                 is_new_user = False
-                #                 if self.top_ga[i][1] != display_name:
-                #                     self.top_ga[i][1] = display_name
-                #                 break
-                #         if is_new_user:
-                #             new_user = [amount, display_name, id]
-                #             self.top_ga.append(new_user)
-                #     print(self.top_ga)
-                #     return
-
-                # elif "made it rain!" in message.content:
-                #     print('Hứng mưa')
-                #     amount = message.content.split('each received', 1)[1]
-                #     amount = amount.split('Ѧ!', 1)[0]
-                #     amount = float(amount)
-                #     print('So ark: {}'.format(amount))
-                #     for user in message.mentions:
-                #         display_name = user.display_name
-                #         id = user.id
-                #         is_new_user = True
-
-                #         for i, item in enumerate(self.top_rain):
-                #             if id == item[2]:
-                #                 self.top_rain[i][0] += amount
-                #                 is_new_user = False
-                #                 if self.top_rain[i][1] != display_name:
-                #                     self.top_rain[i][1] = display_name
-                #                 break
-                #         if is_new_user:
-                #             new_user = [amount, display_name, id]
-                #             self.top_rain.append(new_user)
-                #     print(self.top_rain)
-                #     return
-
-
-            if message.channel.id=="859030316524896267":
+            if str(message.channel.id) == "859030316524896267":
                 if message.content.startswith('!bot'):
                     self.enable_bot = not self.enable_bot
                     if self.enable_bot:
@@ -290,20 +243,20 @@ class MyClient(discord.Client):
 
                 if message.content.startswith('!toprain'):
                     print('Top rain: {}'.format(self.top_rain))
-                    self.top_rain.sort()
+                    self.top_rain.sort(reverse = True)
                     response = '> Ông trùm hứng mưa:\n'
                     max_len = min(5, len(self.top_rain))
                     for i in range(max_len):
-                        response = response + '> ' + str(i+1) + '. ' + self.top_rain[i][1] + ' - ' + str(self.top_rain[i][0]) + 'ark' + '\n'
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rain[i][1] + '** - ' + str(self.top_rain[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
 
                 if message.content.startswith('!topga'):
                     print('Top ga: {}'.format(self.top_ga))
-                    self.top_ga.sort()
+                    self.top_ga.sort(reverse = True)
                     response = '> Vua tay nhanh hơn não:\n'
                     max_len = min(5, len(self.top_ga))
                     for i in range(max_len):
-                        response = response + '> ' + str(i+1) + '. ' + self.top_ga[i][1] + ' - ' + str(self.top_ga[i][0]) + 'ark' + '\n'
+                        response = response + '> ' + str(i+1) + '. **' + self.top_ga[i][1] + '** - ' + str(self.top_ga[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
 
                 if message.content.startswith('!topga'):
@@ -464,16 +417,6 @@ class MyClient(discord.Client):
                     response = random.choice(nofap)
                     await message.channel.send(response)
                     return
-
-                # if message.content == '!soi gương':
-                #     response = 'https://media.discordapp.net/attachments/829403779513974824/859350808524488714/unknown.png'
-                #     await message.channel.send(response)
-                #     return
-
-                # if message.content.startswith('!xoa'):
-                #     response = 'https://media.discordapp.net/attachments/829403779513974824/859350641344249886/ech.gif'
-                #     await message.channel.send(response)
-                #     return
 
                 if message.content.startswith('!soi'):
                     for user in message.mentions:
