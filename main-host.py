@@ -196,8 +196,8 @@ class MyClient(discord.Client):
 
                         for id in lucky_ids:
                             is_new_user = True
-                            data = await self.fetch_user_profile(id)
-                            name = data.name
+                            profile = await self.fetch_user_profile(id)
+                            name = profile.user.name
 
                             for i, item in enumerate(self.top_rain):
                                 if name == item[1]:
