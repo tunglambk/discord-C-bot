@@ -168,7 +168,7 @@ class MyClient(discord.Client):
 
         if not isinstance(after.channel, discord.DMChannel):
 
-            if after.channel.name == "ark" and str(message.author.id) == "546463922287411230":
+            if after.channel.name == "ark" and str(after.author.id) == "546463922287411230":
 
                 embeds = after.embeds
                 for embed in embeds:
