@@ -164,15 +164,32 @@ class MyClient(discord.Client):
     async def on_ready(self):
         print('Logged on as', self.user)
 
+    
+
     async def on_message(self, message):
 
         if not isinstance(message.channel, discord.DMChannel):
 
-            if message.channel.name=="ark" and str(message.author.id) == "546463922287411230":
-                print('Content: {}'.format(message.content))
-                embeds = message.embeds # return list of embeds
-                for embed in embeds:
-                    print('Embeds: {}'.format(embed.to_dict()))
+            if message.channel.name=="ark" #and str(message.author.id) == "546463922287411230":
+                await data = self.fetch_user_profile(message.author.id)
+                print(data)
+                return
+                #print('Content: {}'.format(message.content))
+                # embeds = message.embeds # return list of embeds
+                # for embed in embeds:
+                #     if 'made it rain' in embed['title']:
+                #         description = embed['description']
+                #         description = description.split('**')
+                #         amount = float(description[3])
+
+                #         title = embed['title']
+                #         title = title.split('**')
+                #         rich_person = title[1]
+
+
+                #         await.self.client.
+                
+
                 # if "The Giveaway of" in message.content and "has ended!" in message.content:
                 #     print('Giveaway')
                 #     amount = message.content.split('to the Winners of', 1)[1]
