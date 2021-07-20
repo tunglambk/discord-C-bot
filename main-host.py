@@ -172,22 +172,28 @@ class MyClient(discord.Client):
 
             if message.channel.name=="ark": #and str(message.author.id) == "546463922287411230":
                 data = await self.fetch_user_profile(message.author.id)
-                print(data)
-                return
-                #print('Content: {}'.format(message.content))
-                # embeds = message.embeds # return list of embeds
-                # for embed in embeds:
-                #     if 'made it rain' in embed['title']:
-                #         description = embed['description']
-                #         description = description.split('**')
-                #         amount = float(description[3])
+                
+                print('Content: {}'.format(message.content))
+                embeds = message.embeds # return list of embeds
+                for embed in embeds:
+                    print(embed)
+                    if 'made it rain' in embed['title']:
+                        description = embed['description']
+                        description = description.split('**')
+                        amount = float(description[3])
 
-                #         title = embed['title']
-                #         title = title.split('**')
-                #         rich_person = title[1]
+                        print('rain amount: {}'.format(amount))
+
+                        title = embed['title']
+                        title = title.split('**')
+                        rich_person = title[1]
+
+                        print('rain rich_person: {}'.format(rich_person))
+
+                        #a['fields'][0]['value'][2:-1]
 
 
-                #         await.self.client.
+                        #await.self.client.
                 
 
                 # if "The Giveaway of" in message.content and "has ended!" in message.content:
