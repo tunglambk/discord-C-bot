@@ -162,6 +162,9 @@ class MyClient(discord.Client):
         self.top_rain = list()
         self.top_rich_rain = list()
         self.top_rich_ga = list()
+        self.total_ga = 0
+        self.total_rain = 0
+        self.total_fee = 0
 
     async def on_ready(self):
         print('Logged on as', self.user)
@@ -170,7 +173,7 @@ class MyClient(discord.Client):
 
         if not isinstance(after.channel, discord.DMChannel):
 
-            if after.channel.name == "ark" and str(after.author.id) == "546463922287411230":
+            if after.guild.id == 769800684056215572 and str(after.author.id) == "546463922287411230":
 
                 embeds = after.embeds
                 for embed in embeds:
@@ -212,6 +215,9 @@ class MyClient(discord.Client):
                             new_user = [amount * len(lucky_ids), rich_person]
                             self.top_rich_ga.append(new_user)
 
+                        self.total_ga += amount * len(lucky_ids)
+                        self.total_fee += 0.01 * len(lucky_ids)
+
                 return
 
 
@@ -220,7 +226,7 @@ class MyClient(discord.Client):
 
         if not isinstance(message.channel, discord.DMChannel):
 
-            if message.channel.name=="ark" and str(message.author.id) == "546463922287411230":
+            if message.guild.id==769800684056215572  and str(message.author.id) == "546463922287411230":
                 
                 embeds = message.embeds # return list of embeds
                 for embed in embeds:
@@ -261,6 +267,8 @@ class MyClient(discord.Client):
                         if is_new_rich_person:
                             new_user = [amount * len(lucky_ids), rich_person]
                             self.top_rich_rain.append(new_user)
+                        self.total_rain += amount * len(lucky_ids)
+                        self.total_fee += 0.01 * len(lucky_ids)
                 return
 
             if str(message.channel.id) == "859030316524896267":
@@ -276,13 +284,57 @@ class MyClient(discord.Client):
             if not self.enable_bot:
                 return
 
-            satoshi_channel = {"spam-bot", "ark", "spam-human"}
-            if message.channel.name in satoshi_channel:
+            satoshi_channel = {814159783677526036, 829403779513974824, 776366209804926981}
+            if message.channel.id in satoshi_channel:
                 if 'satoshi' in message.content:
                     milosid = '<@776381590602514443>'
                     await message.channel.send(milosid)
 
-            if message.channel.name=="ark" or message.channel.name=="spam-bot" or message.channel.name=="test-con-bot":
+            if message.channel.id==829403779513974824 or message.channel.id==814159783677526036 or message.channel.id==859030316524896267:
+
+                if message.content == '!total':
+                    response = ''
+                    response = response + '> Tổng lượng mưa: {:0.2f} ark\n'.format(self.total_rain)
+                    response = response + '> Tổng lương ark cứu đói: {:0.2f} ark\n'.format(self.total_ga)
+                    response = response + '> Tổng phí đã cũng cho bot và mạng: {:0.2f} ark\n'.format(self.total_fee)
+                    await message.channel.send(response)
+
+                    return
+
+                if message.content == '!topall':
+                    self.top_rain.sort(reverse = True)
+                    self.top_ga.sort(reverse = True)
+                    self.top_rich_rain.sort(reverse = True)
+                    self.top_rich_ga.sort(reverse = True)
+
+                    response = '> Ông trùm hứng mưa:\n'
+                    max_len = min(5, len(self.top_rain))
+                    for i in range(max_len):
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rain[i][1] + '** - {:0.2f}'.format(self.top_rain[i][0]) + ' ark' + '\n'
+
+                    response = response + '> \n'
+
+                    response = response + '> Vua tay nhanh hơn não:\n'
+                    max_len = min(5, len(self.top_ga))
+                    for i in range(max_len):
+                        response = response + '> ' + str(i+1) + '. **' + self.top_ga[i][1] + '** - {:0.2f}'.format(self.top_ga[i][0]) + ' ark' + '\n'
+
+                    response = response + '> \n'
+
+                    response = response + '> Hô phong hoán vũ:\n'
+                    max_len = min(5, len(self.top_rich_rain))
+                    for i in range(max_len):
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_rain[i][1] + '** - {:0.2f}'.format(self.top_rich_rain[i][0]) + ' ark' + '\n'
+
+                    response = response + '> \n'
+
+                    response = response + '> Thần tài đến thần tài đến hãy giang tay đón mời:\n'
+                    max_len = min(5, len(self.top_rich_ga))
+                    for i in range(max_len):
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_ga[i][1] + '** - {:0.2f}'.format(self.top_rich_ga[i][0]) + ' ark' + '\n'
+
+                    await message.channel.send(response)
+                    return
 
                 if message.content == '!toprain':
                     self.top_rain.sort(reverse = True)
@@ -291,6 +343,7 @@ class MyClient(discord.Client):
                     for i in range(max_len):
                         response = response + '> ' + str(i+1) + '. **' + self.top_rain[i][1] + '** - {:0.2f}'.format(self.top_rain[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
+                    return
 
                 if message.content == '!topga':
                     self.top_ga.sort(reverse = True)
@@ -299,6 +352,7 @@ class MyClient(discord.Client):
                     for i in range(max_len):
                         response = response + '> ' + str(i+1) + '. **' + self.top_ga[i][1] + '** - {:0.2f}'.format(self.top_ga[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
+                    return
 
                 if message.content == '!richrain':
                     self.top_rich_rain.sort(reverse = True)
@@ -307,6 +361,7 @@ class MyClient(discord.Client):
                     for i in range(max_len):
                         response = response + '> ' + str(i+1) + '. **' + self.top_rich_rain[i][1] + '** - {:0.2f}'.format(self.top_rich_rain[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
+                    return
 
 
                 if message.content == '!richga':
@@ -316,6 +371,7 @@ class MyClient(discord.Client):
                     for i in range(max_len):
                         response = response + '> ' + str(i+1) + '. **' + self.top_rich_ga[i][1] + '** - {:0.2f}'.format(self.top_rich_ga[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
+                    return
 
                 if message.content.startswith('!casaudoi'):
                     self.enable_casau = not self.enable_casau
@@ -355,14 +411,14 @@ class MyClient(discord.Client):
                     return
 
 
-            if str(message.author.id) == '420943647647989785' and self.enable_casau and message.channel.name=="ark":
+            if str(message.author.id) == '420943647647989785' and self.enable_casau and message.channel.id==829403779513974824:
                 await message.add_reaction(":casau:815685082710409237")
 
-            if str(message.author.id) == '776381590602514443' and self.enable_satoshi and message.channel.name=="ark":
+            if str(message.author.id) == '776381590602514443' and self.enable_satoshi and message.channel.id==829403779513974824:
                 await message.add_reaction("a:tenor_2:861069706371137537")
                 await message.add_reaction(":Satoshi_Nakamoto:861071505802919936")
 
-            if self.enable_soap and message.channel.name=="ark":
+            if self.enable_soap and message.channel.id==829403779513974824:
                 soap_keywords = ['soap', 'swap', 'xì quáp', 'xà bông', 'xà phòng']
                 for keyword in soap_keywords:
                     if keyword in message.content:
@@ -385,10 +441,10 @@ class MyClient(discord.Client):
                     await message.add_reaction("a:aPES_SadDance:849698896031776768")
                 return
 
-            if message.channel.name=="spam-bot":# or message.channel.name=="ark":
+            if message.channel.id==814159783677526036:# or message.channel.name=="ark":
 
                 ark = False
-                if message.channel.name=="ark":
+                if message.channel.id==829403779513974824:
                     ark = True
 
                 if message.content.startswith('?help') and not ark:
@@ -411,16 +467,17 @@ class MyClient(discord.Client):
                     truyencuoi_string =     '> `!truyencuoi`: trả về 1 truyện cười\n'
                     fap_string =            '> `!fap` hoặc `!nofap`: show ảnh no fap\n'
                     se_string =             '> `!sex` or `!sẽ`: Xem sẽ (theo yêu cầu của dream)\n'
-                    top_ga_string =         '> `!topga`: Xem top members nhận GA trong box ark\n'
-                    top_rain_string =       '> `!toprain`: Xem top members nhân rain trong box ark\n'
-                    top_rich_ga_string =    '> `!richga`: Xem top mạnh thường quân GA trong box ark\n'
-                    top_rich_rain_string =  '> `!richrain`: Xem top mạnh thường quân tạo rain trong box ark\n'
+                    top_ga_string =         '> `!topga`: Xem top members nhận GA\n'
+                    top_rain_string =       '> `!toprain`: Xem top members nhân rain\n'
+                    top_rich_ga_string =    '> `!richga`: Xem top mạnh thường quân GA\n'
+                    top_rich_rain_string =  '> `!richrain`: Xem top mạnh thường quân tạo rain\n'
+                    top_all_string =        '> `!topall`: Xem tất cả top GA và rain\n'
                     note_string =           '> Chức năng !face và !talk chỉ là funny nhé các feng'
 
 
                     help = crypto_intro + price_string + price_tlln_string + rate_string + price_shitcoin_string \
                             + space + funny_intro + talk_string + soi_string + face_string + select_string + tho_string + truyencuoi_string + fap_string \
-                            + se_string + space + top_ga_string + top_rain_string + top_rich_ga_string + top_rich_rain_string + note_string
+                            + se_string + space + top_ga_string + top_rain_string + top_rich_ga_string + top_rich_rain_string + top_all_string + note_string
 
                     await message.channel.send(help)
                     return
