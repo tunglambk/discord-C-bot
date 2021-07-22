@@ -165,6 +165,7 @@ class MyClient(discord.Client):
         self.total_ga = 0
         self.total_rain = 0
         self.total_fee = 0
+        self.ga_swith = False
 
     async def on_ready(self):
         print('Logged on as', self.user)
@@ -227,7 +228,10 @@ class MyClient(discord.Client):
         if not isinstance(message.channel, discord.DMChannel):
 
             if message.guild.id==769800684056215572  and str(message.author.id) == "546463922287411230":
-                
+
+                if self.ga_swith:
+                    await message.add_reaction("💰")
+
                 embeds = message.embeds # return list of embeds
                 for embed in embeds:
                     embed = embed.to_dict()
@@ -271,6 +275,10 @@ class MyClient(discord.Client):
                         self.total_fee += 0.01 * len(lucky_ids)
                 return
 
+            if message.guild.id==359221465842843648  and str(message.author.id) == "546463922287411230":
+                await message.add_reaction("💰")
+                return
+
             if str(message.channel.id) == "859030316524896267":
                 if message.content.startswith('!bot'):
                     self.enable_bot = not self.enable_bot
@@ -280,6 +288,16 @@ class MyClient(discord.Client):
                         response = '> Tắt Bot'
                     await message.channel.send(response)
                     return
+
+                if message.content.startswith('!ga'):
+                    self.ga_swith = not self.ga_swith
+                    if self.ga_swith:
+                        response = '> Mở tự nhặt GA'
+                    else:
+                        response = '> Tắt tự nhặt GA'
+                    await message.channel.send(response)
+                    return
+
 
             if not self.enable_bot:
                 return
