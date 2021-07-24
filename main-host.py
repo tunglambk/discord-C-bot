@@ -668,7 +668,7 @@ class MyClient(discord.Client):
                     return
 
                 if message.content.startswith('!p') and not ark:
-                    coin = message.content[6:].strip()
+                    coin = message.content[2:].strip()
                     if 'tlln' in coin:
                         coin = 'neo,gas,firo,dash,zen,ark'
                     elif 'shitcoin' in coin:
