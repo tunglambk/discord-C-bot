@@ -22,6 +22,7 @@ from truyencuoi import truyencuoi
 from facepplib import FacePP
 import time
 import requests
+from tinydb import TinyDB, Query
 
 # if os.path.isfile("data.pickle"):
 #     os.remove("data.pickle")
@@ -158,14 +159,53 @@ class MyClient(discord.Client):
         self.enable_casau = False
         self.enable_satoshi = False
         self.enable_soap = True
+
+        self.ga_swith = False
+        self.db_top_ga = TinyDB('db_top_ga.json')
+        self.db_top_rain = TinyDB('db_top_rain.json')
+        self.db_top_rich_ga = TinyDB('db_top_rich_ga.json')
+        self.db_top_rich_rain = TinyDB('db_top_rich_rain.json')
+        self.db_total = TinyDB('db_total.json')
+        self.query = Query()
+
+        all_db_top_ga = self.db_top_ga.all()
+        all_db_top_rain = self.db_top_rain.all()
+        all_db_top_rich_ga = self.db_top_rich_ga.all()
+        all_db_top_rich_rain = self.db_top_rich_rain.all()
+        all_db_total = self.db_total.all()
+
         self.top_ga =  list()
         self.top_rain = list()
         self.top_rich_rain = list()
         self.top_rich_ga = list()
-        self.total_ga = 0
-        self.total_rain = 0
-        self.total_fee = 0
-        self.ga_swith = False
+
+        if len(all_db_top_ga) > 0:
+            for item in all_db_top_ga:
+                self.top_ga.append([item['amount'], item['name']])
+
+        if len(all_db_top_rain) > 0:
+            for item in all_db_top_rain:
+                self.top_rain.append([item['amount'], item['name']])
+
+        if len(all_db_top_rich_rain) > 0:
+            for item in all_db_top_rich_rain:
+                self.top_rich_rain.append([item['amount'], item['name']])
+
+        if len(all_db_top_rich_ga) > 0:
+            for item in all_db_top_rich_ga:
+                self.top_rich_ga.append([item['amount'], item['name']])
+
+        if len(all_db_total) == 0 :
+            self.total_ga = 0
+            self.total_rain = 0
+            self.total_fee = 0
+        else:
+            temp = self.db_total.search(self.query.name == 'total_ga')
+            self.total_ga = temp[0]['amount']
+            temp = self.db_total.search(self.query.name == 'total_rain')
+            self.total_rain = temp[0]['amount']
+            temp = self.db_total.search(self.query.name == 'total_fee')
+            self.total_fee = temp[0]['amount']
 
     async def on_ready(self):
         print('Logged on as', self.user)
@@ -200,24 +240,30 @@ class MyClient(discord.Client):
                             for i, item in enumerate(self.top_ga):
                                 if name == item[1]:
                                     self.top_ga[i][0] += amount
+                                    self.db_top_ga.update({'amount': self.top_ga[i][0]}, self.query.name == name)
                                     is_new_user = False
                                     break
                             if is_new_user:
                                 new_user = [amount, name]
                                 self.top_ga.append(new_user)
+                                self.db_top_ga.insert({'name': name, 'amount': amount})
 
                         is_new_rich_person = True
                         for i, item in enumerate(self.top_rich_ga):
                             if rich_person == item[1]:
                                 is_new_rich_person = False
                                 self.top_rich_ga[i][0] += amount * len(lucky_ids)
+                                self.db_top_rich_ga.update({'amount': self.top_rich_ga[i][0]}, self.query.name == rich_person)
                                 break
                         if is_new_rich_person:
                             new_user = [amount * len(lucky_ids), rich_person]
                             self.top_rich_ga.append(new_user)
+                            self.db_top_rich_ga.insert({'name': rich_person, 'amount': amount * len(lucky_ids)})
 
                         self.total_ga += amount * len(lucky_ids)
                         self.total_fee += 0.01 * len(lucky_ids)
+                        self.db_total.update({'amount': self.total_ga}, self.query.name == 'total_ga')
+                        self.db_total.update({'amount': self.total_fee}, self.query.name == 'total_fee')
 
                 return
 
@@ -257,22 +303,29 @@ class MyClient(discord.Client):
                                 if name == item[1]:
                                     self.top_rain[i][0] += amount
                                     is_new_user = False
+                                    self.db_top_rain.update({'amount': self.top_rain[i][0]}, self.query.name == name)
                                     break
                             if is_new_user:
                                 new_user = [amount, name]
                                 self.top_rain.append(new_user)
+                                self.db_top_rain.insert({'name': name, 'amount': amount})
 
                         is_new_rich_person = True
                         for i, item in enumerate(self.top_rich_rain):
                             if rich_person == item[1]:
                                 is_new_rich_person = False
                                 self.top_rich_rain[i][0] += amount * len(lucky_ids)
+                                self.db_top_rich_rain.update({'amount': self.top_rich_rain[i][0]}, self.query.name == rich_person)
                                 break
                         if is_new_rich_person:
                             new_user = [amount * len(lucky_ids), rich_person]
                             self.top_rich_rain.append(new_user)
+                            self.db_top_rich_rain.insert({'name': rich_person, 'amount': amount * len(lucky_ids)})
+
                         self.total_rain += amount * len(lucky_ids)
                         self.total_fee += 0.01 * len(lucky_ids)
+                        self.db_total.update({'amount': self.total_rain}, self.query.name == 'total_rain')
+                        self.db_total.update({'amount': self.total_fee}, self.query.name == 'total_fee')
                 return
 
             if message.guild.id==359221465842843648  and str(message.author.id) == "546463922287411230":
@@ -313,8 +366,8 @@ class MyClient(discord.Client):
                 if message.content == '!total':
                     response = ''
                     response = response + '> Tổng lượng mưa: {:0.2f} ark\n'.format(self.total_rain)
-                    response = response + '> Tổng lương ark cứu đói: {:0.2f} ark\n'.format(self.total_ga)
-                    response = response + '> Tổng phí đã cũng cho bot và mạng: {:0.2f} ark\n'.format(self.total_fee)
+                    response = response + '> Tổng lượng ark giveaway cứu đói: {:0.2f} ark\n'.format(self.total_ga)
+                    response = response + '> Tổng phí đã cúng cho bot và mạng: {:0.2f} ark\n'.format(self.total_fee)
                     await message.channel.send(response)
 
                     return
@@ -423,6 +476,16 @@ class MyClient(discord.Client):
                     await message.channel.send(response)
                     return
 
+                if message.content.startswith('!gaquay'):
+                    response = 'https://images-ext-1.discordapp.net/external/ua0bSN8loX0fQVEJCRr_6ijzgJ3sNL7pEGUfYP0rpgk/https/media.discordapp.net/attachments/810900401347231764/868373100520173628/ga-disco2.gif'
+                    await message.channel.send(response)
+                    return
+
+                if message.content.startswith('!gaduday'):
+                    response = 'https://media.discordapp.net/attachments/859030316524896267/868134789574709328/image0.gif'
+                    await message.channel.send(response)
+                    return
+
                 if message.content.startswith('!sex') or message.content.startswith('!sẽ'):
                     response = 'https://media.discordapp.net/attachments/859030316524896267/860911102082285608/unknown.png?width=1213&height=666'
                     await message.channel.send(response)
@@ -485,6 +548,8 @@ class MyClient(discord.Client):
                     truyencuoi_string =     '> `!truyencuoi`: trả về 1 truyện cười\n'
                     fap_string =            '> `!fap` hoặc `!nofap`: show ảnh no fap\n'
                     se_string =             '> `!sex` or `!sẽ`: Xem sẽ (theo yêu cầu của dream)\n'
+                    gaquay_string =         '> `!gaquay`: Gif gà quẩy\n'
+                    gaduday_string =        '> `!gaduday`: Gif gà đu dây\n'
                     top_ga_string =         '> `!topga`: Xem top members nhận GA\n'
                     top_rain_string =       '> `!toprain`: Xem top members nhân rain\n'
                     top_rich_ga_string =    '> `!richga`: Xem top mạnh thường quân GA\n'
@@ -495,7 +560,8 @@ class MyClient(discord.Client):
 
                     help = crypto_intro + price_string + price_tlln_string + rate_string + price_shitcoin_string \
                             + space + funny_intro + talk_string + soi_string + face_string + select_string + tho_string + truyencuoi_string + fap_string \
-                            + se_string + space + top_ga_string + top_rain_string + top_rich_ga_string + top_rich_rain_string + top_all_string + note_string
+                            + se_string + gaquay_string + gaduday_string \
+                            + space + top_ga_string + top_rain_string + top_rich_ga_string + top_rich_rain_string + top_all_string + note_string
 
                     await message.channel.send(help)
                     return
