@@ -351,6 +351,33 @@ class MyClient(discord.Client):
                     await message.channel.send(response)
                     return
 
+                if message.content.startswith('!casaudoi'):
+                    self.enable_casau = not self.enable_casau
+                    if self.enable_casau:
+                        response = '> Bắt đầu thả cá sấu vào chat của dơi trong box ARK'
+                    else:
+                        response = '> Ngừng thả cá sấu vào chat của dơi trong box ARK'
+                    await message.channel.send(response)
+                    return
+
+                if message.content.startswith('!satoshimitoshi'):
+                    self.enable_satoshi = not self.enable_satoshi
+                    if self.enable_satoshi:
+                        response = '> Bắt đầu thả emo vào chat của Mitoshi trong box ARK'
+                    else:
+                        response = '> Ngừng thả emo vào chat của Mitoshi trong box ARK'
+                    await message.channel.send(response)
+                    return
+
+                if message.content.startswith('!soap'):
+                    self.enable_soap = not self.enable_soap
+                    if self.enable_satoshi:
+                        response = '> Bắt đầu thả emo soap vào chat có liên quan tới swap trong box ARK'
+                    else:
+                        response = '> Ngừng thả emo soap vào chat có liên quan tới swap trong box ARK'
+                    await message.channel.send(response)
+                    return
+
 
             if not self.enable_bot:
                 return
@@ -361,7 +388,8 @@ class MyClient(discord.Client):
                     milosid = '<@776381590602514443>'
                     await message.channel.send(milosid)
 
-            if message.channel.id==829403779513974824 or message.channel.id==814159783677526036 or message.channel.id==859030316524896267:
+            spam_channel = {829403779513974824, 814159783677526036, 859030316524896267, 813452767099355136}
+            if message.channel.id in spam_channel:
 
                 if message.content == '!total':
                     response = ''
@@ -444,33 +472,6 @@ class MyClient(discord.Client):
                     await message.channel.send(response)
                     return
 
-                if message.content.startswith('!casaudoi'):
-                    self.enable_casau = not self.enable_casau
-                    if self.enable_casau:
-                        response = '> Bắt đầu thả cá sấu vào chat của dơi trong box ARK'
-                    else:
-                        response = '> Ngừng thả cá sấu vào chat của dơi trong box ARK'
-                    await message.channel.send(response)
-                    return
-
-                if message.content.startswith('!satoshimitoshi'):
-                    self.enable_satoshi = not self.enable_satoshi
-                    if self.enable_satoshi:
-                        response = '> Bắt đầu thả emo vào chat của Mitoshi trong box ARK'
-                    else:
-                        response = '> Ngừng thả emo vào chat của Mitoshi trong box ARK'
-                    await message.channel.send(response)
-                    return
-
-                if message.content.startswith('!soap'):
-                    self.enable_soap = not self.enable_soap
-                    if self.enable_satoshi:
-                        response = '> Bắt đầu thả emo soap vào chat có liên quan tới swap trong box ARK'
-                    else:
-                        response = '> Ngừng thả emo soap vào chat có liên quan tới swap trong box ARK'
-                    await message.channel.send(response)
-                    return
-
                 if message.content.startswith('!shisa'):
                     response = 'https://media.discordapp.net/attachments/859030316524896267/861580019696271360/image0.gif?width=1184&height=666'
                     await message.channel.send(response)
@@ -482,7 +483,7 @@ class MyClient(discord.Client):
                     return
 
                 if message.content.startswith('!gaduday'):
-                    response = 'https://media.discordapp.net/attachments/859030316524896267/868134789574709328/image0.gif'
+                    response = 'https://images-ext-2.discordapp.net/external/uqy5_Jeezo5g0RpxAFhGXr8AC1MTYHI3nlY-kIBId6c/https/media.discordapp.net/attachments/829403779513974824/868427177165750272/du-day.gif'
                     await message.channel.send(response)
                     return
 
