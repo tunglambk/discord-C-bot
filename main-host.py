@@ -532,10 +532,10 @@ class MyClient(discord.Client):
                     help = ''
 
                     crypto_intro =          '> **CRYPTO**\n> \n'
-                    price_string =          '> `!price coin-1, coin-2`: check price of coins\n'
-                    price_tlln_string =     '> `!price tlln`: check price of tlln coin list\n'
+                    price_string =          '> `!p coin-1, coin-2`: check price of coins\n'
+                    price_tlln_string =     '> `!p tlln`: check price of tlln coin list\n'
                     rate_string =           '> `!rate number coin-1 = ? coin-2`: check coin rate (Exp: !rate 10 neo = ? gas)\n'
-                    price_shitcoin_string = '> `!price shitcoin`: check price of some fucking shitcoin\n'
+                    price_shitcoin_string = '> `!p shitcoin`: check price of some fucking shitcoin\n'
 
                     space = '> \n'
 
@@ -663,6 +663,11 @@ class MyClient(discord.Client):
                     return
 
                 if message.content.startswith('!price') and not ark:
+                    response = '> Chuyển qua dùng !p, không dùng !price nữa nha feng'
+                    await message.channel.send(response)
+                    return
+
+                if message.content.startswith('!p') and not ark:
                     coin = message.content[6:].strip()
                     if 'tlln' in coin:
                         coin = 'neo,gas,firo,dash,zen,ark'
