@@ -494,7 +494,8 @@ class MyClient(discord.Client):
 
                 if message.content.startswith('!caumua'):
                     response = '> Ey, Bee’s sedie! Ey, elfgy! Ex ite? Zay Kay! Ail endemal , cure are est. Thee jew! Vie. Dubé Jew! Axe wife jeet.\n'
-                    response = response + '<a:rain:866595451968290826> <a:rain:866595451968290826> <a:rain:866595451968290826>'
+                    await message.channel.send(response)
+                    response = '<a:rain:866595451968290826> <a:rain:866595451968290826> <a:rain:866595451968290826>'
                     await message.channel.send(response)
                     return
 
