@@ -494,7 +494,12 @@ class MyClient(discord.Client):
 
                 if message.content.startswith('!caumua'):
                     response = '> Ey, Bee’s sedie! Ey, elfgy! Ex ite? Zay Kay! Ail endemal , cure are est. Thee jew! Vie. Dubé Jew! Axe wife jeet.\n'
-                    response = response + '> <a:rain:866595451968290826> <a:rain:866595451968290826> <a:rain:866595451968290826>'
+                    response = response + '<a:rain:866595451968290826> <a:rain:866595451968290826> <a:rain:866595451968290826>'
+                    await message.channel.send(response)
+                    return
+
+                if message.content.startswith('!mottomua'):
+                    response = '> Đảng Rain có Ngài đời đời ấm no.\n> Alarom talilgo vuvinai!'
                     await message.channel.send(response)
                     return
 
@@ -563,13 +568,14 @@ class MyClient(discord.Client):
                     top_rich_rain_string =  '> `!richrain`: Xem top mạnh thường quân tạo rain\n'
                     top_all_string =        '> `!topall`: Xem tất cả top GA và rain\n'
                     caumua_string =         '> `!caumua`: Thần chú cầu mưa\n'
+                    mottomua_string =       '> `!mottomua`: Châm ngôn Đảng Mưa\n'
                     note_string =           '> Chức năng !face và !talk chỉ là funny nhé các feng'
 
 
                     help = crypto_intro + price_string + price_tlln_string + rate_string + price_shitcoin_string \
                             + space + funny_intro + talk_string + soi_string + face_string + select_string + tho_string + truyencuoi_string + fap_string \
                             + se_string + gaquay_string + gaduday_string \
-                            + space + top_ga_string + top_rain_string + top_rich_ga_string + top_rich_rain_string + top_all_string + caumua_string + note_string
+                            + space + top_ga_string + top_rain_string + top_rich_ga_string + top_rich_rain_string + top_all_string + caumua_string + mottomua_string + space + note_string
 
                     await message.channel.send(help)
                     return
