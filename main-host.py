@@ -199,6 +199,9 @@ class MyClient(discord.Client):
             self.total_ga = 0
             self.total_rain = 0
             self.total_fee = 0
+            self.db_total.insert({'name': 'total_ga', 'amount': 0})
+            self.db_total.insert({'name': 'total_fee', 'amount': 0})
+            self.db_total.insert({'name': 'total_rain', 'amount': 0})
         else:
             temp = self.db_total.search(self.query.name == 'total_ga')
             self.total_ga = temp[0]['amount']
