@@ -490,6 +490,11 @@ class MyClient(discord.Client):
                     await message.channel.send(response)
                     return
 
+                if message.content.startswith('!milosquay'):
+                    response = 'https://media.discordapp.net/attachments/829403779513974824/868816750601469972/vanvui.gif'
+                    await message.channel.send(response)
+                    return
+
                 if message.content.startswith('!sex') or message.content.startswith('!sẽ'):
                     response = 'https://media.discordapp.net/attachments/859030316524896267/860911102082285608/unknown.png?width=1213&height=666'
                     await message.channel.send(response)
@@ -564,8 +569,9 @@ class MyClient(discord.Client):
                     truyencuoi_string =     '> `!truyencuoi`: trả về 1 truyện cười\n'
                     fap_string =            '> `!fap` hoặc `!nofap`: show ảnh no fap\n'
                     se_string =             '> `!sex` or `!sẽ`: Xem sẽ (theo yêu cầu của dream)\n'
-                    gaquay_string =         '> `!gaquay`: Gif gà quẩy\n'
+                    gaquay_string =         '> `!gaquay`: Gif gà quẩy party\n'
                     gaduday_string =        '> `!gaduday`: Gif gà đu dây\n'
+                    milosquay_string =      '> `!milosquay`: Gif Milos quẩy party\n'
                     top_ga_string =         '> `!topga`: Xem top members nhận GA\n'
                     top_rain_string =       '> `!toprain`: Xem top members nhân rain\n'
                     top_rich_ga_string =    '> `!richga`: Xem top mạnh thường quân GA\n'
@@ -578,7 +584,7 @@ class MyClient(discord.Client):
 
                     help = crypto_intro + price_string + price_tlln_string + rate_string + price_shitcoin_string \
                             + space + funny_intro + talk_string + soi_string + face_string + select_string + tho_string + truyencuoi_string + fap_string \
-                            + se_string + gaquay_string + gaduday_string \
+                            + se_string + gaquay_string + gaduday_string + milosquay_string \
                             + space + top_ga_string + top_rain_string + top_rich_ga_string + top_rich_rain_string + top_all_string + caumua_string + mottomua_string + space + note_string
 
                     await message.channel.send(help)
