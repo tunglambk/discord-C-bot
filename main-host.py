@@ -481,7 +481,7 @@ class MyClient(discord.Client):
                     for user in message.mentions:
                         id = user.id
                         print(id)
-                        response = '> Đấu tố  **{}**\n'.format(id)
+                        response = '> Đấu tố  **{}**\n'.format(user.display_name)
                         not_found = True
                         for item in self.top_ga:
                             if id == item[1]:
@@ -604,7 +604,7 @@ class MyClient(discord.Client):
                     top_rich_ga_string =    '> `!richga`: Xem top mạnh thường quân GA\n'
                     top_rich_rain_string =  '> `!richrain`: Xem top mạnh thường quân tạo rain\n'
                     top_all_string =        '> `!topall`: Xem tất cả top GA và rain\n'
-                    bocphot_string =        '> `!bocphot @mention-member-1, @mention-member-2`: Soi GA và mưa đã nhận\n'
+                    bocphot_string =        '> `!bocphot @mention-member-1`: Soi GA và mưa đã nhận\n'
                     caumua_string =         '> `!caumua`: Thần chú cầu mưa\n'
                     mottomua_string =       '> `!mottomua`: Châm ngôn Đảng Mưa\n'
                     note_string =           '> Chức năng !face và !talk chỉ là funny nhé các feng'
