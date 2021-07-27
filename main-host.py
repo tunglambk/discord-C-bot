@@ -475,6 +475,30 @@ class MyClient(discord.Client):
                     await message.channel.send(response)
                     return
 
+                if message.content.startswith('!bocphot'):
+                    for user in message.mentions:
+                        name = user.name
+                        response = '> Đấu tố  **{}**\n'.format(user.display_name)
+                        not_found = True
+                        for item in self.top_ga:
+                            if name == item[1]:
+                                response += '> Giveaway đã lụm: **{:0.2f}** ark\n'.format(item[0])
+                                not_found = False
+                                break
+                        if not_found:
+                            response += '> Giveaway đã lụm: **0** ark\n'
+
+                        not_found = True
+                        for item in self.top_rain:
+                            if name == item[1]:
+                                response += '> Mưa đã hứng: **{:0.2f}** ark\n'.format(item[0])
+                                not_found = False
+                                break
+                        if not_found:
+                            response += '> Mưa đã hứng: **0** ark\n\n'
+                        await message.channel.send(respone)
+                        return
+
                 if message.content.startswith('!shisa'):
                     response = 'https://media.discordapp.net/attachments/859030316524896267/861580019696271360/image0.gif?width=1184&height=666'
                     await message.channel.send(response)
@@ -577,6 +601,7 @@ class MyClient(discord.Client):
                     top_rich_ga_string =    '> `!richga`: Xem top mạnh thường quân GA\n'
                     top_rich_rain_string =  '> `!richrain`: Xem top mạnh thường quân tạo rain\n'
                     top_all_string =        '> `!topall`: Xem tất cả top GA và rain\n'
+                    bocphot_string =        '> `!bocphot @mention-member-1, @mention-member-2`: Soi GA và mưa đã nhận\n'
                     caumua_string =         '> `!caumua`: Thần chú cầu mưa\n'
                     mottomua_string =       '> `!mottomua`: Châm ngôn Đảng Mưa\n'
                     note_string =           '> Chức năng !face và !talk chỉ là funny nhé các feng'
@@ -585,7 +610,8 @@ class MyClient(discord.Client):
                     help = crypto_intro + price_string + price_tlln_string + rate_string + price_shitcoin_string \
                             + space + funny_intro + talk_string + soi_string + face_string + select_string + tho_string + truyencuoi_string + fap_string \
                             + se_string + gaquay_string + gaduday_string + milosquay_string \
-                            + space + top_ga_string + top_rain_string + top_rich_ga_string + top_rich_rain_string + top_all_string + caumua_string + mottomua_string + space + note_string
+                            + space + top_ga_string + top_rain_string + top_rich_ga_string + top_rich_rain_string + top_all_string + caumua_string \
+                            + bocphot_string + mottomua_string + space + note_string
 
                     await message.channel.send(help)
                     return
