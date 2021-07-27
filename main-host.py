@@ -181,19 +181,19 @@ class MyClient(discord.Client):
 
         if len(all_db_top_ga) > 0:
             for item in all_db_top_ga:
-                self.top_ga.append([item['amount'], item['name']])
+                self.top_ga.append([item['amount'], item['id'], item['name']])
 
         if len(all_db_top_rain) > 0:
             for item in all_db_top_rain:
-                self.top_rain.append([item['amount'], item['name']])
+                self.top_rain.append([item['amount'],  item['id'], item['name']])
 
         if len(all_db_top_rich_rain) > 0:
             for item in all_db_top_rich_rain:
-                self.top_rich_rain.append([item['amount'], item['name']])
+                self.top_rich_rain.append([item['amount'],  item['id'], item['name']])
 
         if len(all_db_top_rich_ga) > 0:
             for item in all_db_top_rich_ga:
-                self.top_rich_ga.append([item['amount'], item['name']])
+                self.top_rich_ga.append([item['amount'],  item['id'], item['name']])
 
         if len(all_db_total) == 0 :
             self.total_ga = 0
