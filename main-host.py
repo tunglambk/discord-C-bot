@@ -496,7 +496,7 @@ class MyClient(discord.Client):
                                 break
                         if not_found:
                             response += '> Mưa đã hứng: **0** ark\n\n'
-                        await message.channel.send(respone)
+                        await message.channel.send(response)
                         return
 
                 if message.content.startswith('!shisa'):
