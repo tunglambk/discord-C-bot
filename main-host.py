@@ -238,18 +238,19 @@ class MyClient(discord.Client):
                         for id in lucky_ids:
                             is_new_user = True
                             profile = await self.fetch_user_profile(id)
-                            name = profile.user.name
+                            display_name = profile.user.display_name
 
                             for i, item in enumerate(self.top_ga):
-                                if name == item[1]:
+                                if id == item[1]:
                                     self.top_ga[i][0] += amount
-                                    self.db_top_ga.update({'amount': self.top_ga[i][0]}, self.query.name == name)
+                                    self.top_ga[i][2] = display_name
+                                    self.db_top_ga.update({'amount': self.top_ga[i][0], 'name': display_name}, self.query.id == id)
                                     is_new_user = False
                                     break
                             if is_new_user:
-                                new_user = [amount, name]
+                                new_user = [amount, id, display_name]
                                 self.top_ga.append(new_user)
-                                self.db_top_ga.insert({'name': name, 'amount': amount})
+                                self.db_top_ga.insert({'name': display_name, 'amount': amount, 'id': id})
 
                         is_new_rich_person = True
                         for i, item in enumerate(self.top_rich_ga):
@@ -300,18 +301,19 @@ class MyClient(discord.Client):
                         for id in lucky_ids:
                             is_new_user = True
                             profile = await self.fetch_user_profile(id)
-                            name = profile.user.name
+                            display_name = profile.user.display_name
 
                             for i, item in enumerate(self.top_rain):
-                                if name == item[1]:
+                                if id == item[1]:
                                     self.top_rain[i][0] += amount
+                                    self.top_rain[i][2] = display_name
                                     is_new_user = False
-                                    self.db_top_rain.update({'amount': self.top_rain[i][0]}, self.query.name == name)
+                                    self.db_top_rain.update({'amount': self.top_rain[i][0], 'name': display_name}, self.query.id == id)
                                     break
                             if is_new_user:
-                                new_user = [amount, name]
+                                new_user = [amount, id, display_name]
                                 self.top_rain.append(new_user)
-                                self.db_top_rain.insert({'name': name, 'amount': amount})
+                                self.db_top_rain.insert({'name': display_name, 'amount': amount, 'id': id})
 
                         is_new_rich_person = True
                         for i, item in enumerate(self.top_rich_rain):
@@ -477,12 +479,12 @@ class MyClient(discord.Client):
 
                 if message.content.startswith('!bocphot'):
                     for user in message.mentions:
-                        name = user.name
-                        print(name)
-                        response = '> Đấu tố  **{}**\n'.format(user.display_name)
+                        id = user.id
+                        print(id)
+                        response = '> Đấu tố  **{}**\n'.format(id)
                         not_found = True
                         for item in self.top_ga:
-                            if name == item[1]:
+                            if id == item[1]:
                                 response += '> Giveaway đã lụm: **{:0.2f}** ark\n'.format(item[0])
                                 not_found = False
                                 break
@@ -491,7 +493,7 @@ class MyClient(discord.Client):
 
                         not_found = True
                         for item in self.top_rain:
-                            if name == item[1]:
+                            if id == item[1]:
                                 response += '> Mưa đã hứng: **{:0.2f}** ark\n'.format(item[0])
                                 not_found = False
                                 break
