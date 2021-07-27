@@ -189,11 +189,11 @@ class MyClient(discord.Client):
 
         if len(all_db_top_rich_rain) > 0:
             for item in all_db_top_rich_rain:
-                self.top_rich_rain.append([item['amount'],  item['id'], item['name']])
+                self.top_rich_rain.append([item['amount'], item['name']])
 
         if len(all_db_top_rich_ga) > 0:
             for item in all_db_top_rich_ga:
-                self.top_rich_ga.append([item['amount'],  item['id'], item['name']])
+                self.top_rich_ga.append([item['amount'], item['name']])
 
         if len(all_db_total) == 0 :
             self.total_ga = 0
@@ -480,7 +480,6 @@ class MyClient(discord.Client):
                 if message.content.startswith('!bocphot'):
                     for user in message.mentions:
                         id = user.id
-                        print(id)
                         response = '> Đấu tố  **{}**\n'.format(user.display_name)
                         not_found = True
                         for item in self.top_ga:
