@@ -478,6 +478,7 @@ class MyClient(discord.Client):
                 if message.content.startswith('!bocphot'):
                     for user in message.mentions:
                         name = user.name
+                        print(name)
                         response = '> Đấu tố  **{}**\n'.format(user.display_name)
                         not_found = True
                         for item in self.top_ga:
