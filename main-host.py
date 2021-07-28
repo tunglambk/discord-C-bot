@@ -414,28 +414,28 @@ class MyClient(discord.Client):
                     response = '> Ông trùm hứng mưa:\n'
                     max_len = min(5, len(self.top_rain))
                     for i in range(max_len):
-                        response = response + '> ' + str(i+1) + '. **' + self.top_rain[i][1] + '** - {:0.2f}'.format(self.top_rain[i][0]) + ' ark' + '\n'
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rain[i][2] + '** - {:0.2f}'.format(self.top_rain[i][0]) + ' ark' + '\n'
 
                     response = response + '> \n'
 
                     response = response + '> Vua tay nhanh hơn não:\n'
                     max_len = min(5, len(self.top_ga))
                     for i in range(max_len):
-                        response = response + '> ' + str(i+1) + '. **' + self.top_ga[i][1] + '** - {:0.2f}'.format(self.top_ga[i][0]) + ' ark' + '\n'
+                        response = response + '> ' + str(i+1) + '. **' + self.top_ga[i][2] + '** - {:0.2f}'.format(self.top_ga[i][0]) + ' ark' + '\n'
 
                     response = response + '> \n'
 
                     response = response + '> Hô phong hoán vũ:\n'
                     max_len = min(5, len(self.top_rich_rain))
                     for i in range(max_len):
-                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_rain[i][1] + '** - {:0.2f}'.format(self.top_rich_rain[i][0]) + ' ark' + '\n'
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_rain[i][2] + '** - {:0.2f}'.format(self.top_rich_rain[i][0]) + ' ark' + '\n'
 
                     response = response + '> \n'
 
                     response = response + '> Thần tài đến thần tài đến hãy giang tay đón mời:\n'
                     max_len = min(5, len(self.top_rich_ga))
                     for i in range(max_len):
-                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_ga[i][1] + '** - {:0.2f}'.format(self.top_rich_ga[i][0]) + ' ark' + '\n'
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_ga[i][2] + '** - {:0.2f}'.format(self.top_rich_ga[i][0]) + ' ark' + '\n'
 
                     await message.channel.send(response)
                     return
@@ -445,7 +445,7 @@ class MyClient(discord.Client):
                     response = '> Ông trùm hứng mưa:\n'
                     max_len = min(5, len(self.top_rain))
                     for i in range(max_len):
-                        response = response + '> ' + str(i+1) + '. **' + self.top_rain[i][1] + '** - {:0.2f}'.format(self.top_rain[i][0]) + ' ark' + '\n'
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rain[i][2] + '** - {:0.2f}'.format(self.top_rain[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
                     return
 
@@ -454,7 +454,7 @@ class MyClient(discord.Client):
                     response = '> Vua tay nhanh hơn não:\n'
                     max_len = min(5, len(self.top_ga))
                     for i in range(max_len):
-                        response = response + '> ' + str(i+1) + '. **' + self.top_ga[i][1] + '** - {:0.2f}'.format(self.top_ga[i][0]) + ' ark' + '\n'
+                        response = response + '> ' + str(i+1) + '. **' + self.top_ga[i][2] + '** - {:0.2f}'.format(self.top_ga[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
                     return
 
@@ -463,7 +463,7 @@ class MyClient(discord.Client):
                     response = '> Hô phong hoán vũ:\n'
                     max_len = min(5, len(self.top_rich_rain))
                     for i in range(max_len):
-                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_rain[i][1] + '** - {:0.2f}'.format(self.top_rich_rain[i][0]) + ' ark' + '\n'
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_rain[i][2] + '** - {:0.2f}'.format(self.top_rich_rain[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
                     return
 
@@ -473,7 +473,7 @@ class MyClient(discord.Client):
                     response = '> Thần tài đến thần tài đến hãy giang tay đón mời:\n'
                     max_len = min(5, len(self.top_rich_ga))
                     for i in range(max_len):
-                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_ga[i][1] + '** - {:0.2f}'.format(self.top_rich_ga[i][0]) + ' ark' + '\n'
+                        response = response + '> ' + str(i+1) + '. **' + self.top_rich_ga[i][2] + '** - {:0.2f}'.format(self.top_rich_ga[i][0]) + ' ark' + '\n'
                     await message.channel.send(response)
                     return
 
