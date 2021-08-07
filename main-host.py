@@ -337,67 +337,67 @@ class MyClient(discord.Client):
                 await message.add_reaction("💰")
                 return
 
-
-            if message.content == '!caumua':
-                response = '> Ey, Bee’s sedie! Ey, elfgy! Ex ite? Zay Kay! Ail endemal , cure are est. Thee jew! Vie. Dubé Jew! Axe wife jeet.\n'
-                await message.channel.send(response)
-                response = '<a:rain:866595451968290826> <a:rain:866595451968290826> <a:rain:866595451968290826>'
-                await message.channel.send(response)
-                return
-
-            if message.content == '!mottomua':
-                response = '> Đảng Rain có Ngài đời đời ấm no.\n> Alarom talilgo vuvinai!'
-                await message.channel.send(response)
-                return
-
-            if message.content.startswith('!bocphot'):
-                for user in message.mentions:
-                    id = user.id
-                    response = '> Đấu tố  **{}**\n'.format(user.display_name)
-                    not_found = True
-                    for item in self.top_ga:
-                        if id == item[1]:
-                            response += '> Giveaway đã lụm: **{:0.2f}** ark\n'.format(item[0])
-                            not_found = False
-                            break
-                    if not_found:
-                        response += '> Giveaway đã lụm: **0** ark\n'
-                    not_found = True
-                    for item in self.top_rain:
-                        if id == item[1]:
-                            response += '> Mưa đã hứng: **{:0.2f}** ark\n'.format(item[0])
-                            not_found = False
-                            break
-                    if not_found:
-                        response += '> Mưa đã hứng: **0** ark\n\n'
+            if message.guild.id==769800684056215572 or message.guild.id==839041638369984572:
+                if message.content == '!caumua':
+                    response = '> Ey, Bee’s sedie! Ey, elfgy! Ex ite? Zay Kay! Ail endemal , cure are est. Thee jew! Vie. Dubé Jew! Axe wife jeet.\n'
+                    await message.channel.send(response)
+                    response = '<a:rain:866595451968290826> <a:rain:866595451968290826> <a:rain:866595451968290826>'
                     await message.channel.send(response)
                     return
-            if message.content == '!shisa':
-                response = 'https://media.discordapp.net/attachments/859030316524896267/861580019696271360/image0.gif?width=1184&height=666'
-                await message.channel.send(response)
-                return
-            if message.content == '!gaquay':
-                response = 'https://images-ext-1.discordapp.net/external/ua0bSN8loX0fQVEJCRr_6ijzgJ3sNL7pEGUfYP0rpgk/https/media.discordapp.net/attachments/810900401347231764/868373100520173628/ga-disco2.gif'
-                await message.channel.send(response)
-                return
-            if message.content == '!gaduday':
-                response = 'https://images-ext-2.discordapp.net/external/uqy5_Jeezo5g0RpxAFhGXr8AC1MTYHI3nlY-kIBId6c/https/media.discordapp.net/attachments/829403779513974824/868427177165750272/du-day.gif'
-                await message.channel.send(response)
-                return
-            if message.content == '!milosquay':
-                response = 'https://media.discordapp.net/attachments/829403779513974824/868816750601469972/vanvui.gif'
-                await message.channel.send(response)
-                return
+    
+                if message.content == '!mottomua':
+                    response = '> Đảng Rain có Ngài đời đời ấm no.\n> Alarom talilgo vuvinai!'
+                    await message.channel.send(response)
+                    return
+    
+                if message.content.startswith('!bocphot'):
+                    for user in message.mentions:
+                        id = user.id
+                        response = '> Đấu tố  **{}**\n'.format(user.display_name)
+                        not_found = True
+                        for item in self.top_ga:
+                            if id == item[1]:
+                                response += '> Giveaway đã lụm: **{:0.2f}** ark\n'.format(item[0])
+                                not_found = False
+                                break
+                        if not_found:
+                            response += '> Giveaway đã lụm: **0** ark\n'
+                        not_found = True
+                        for item in self.top_rain:
+                            if id == item[1]:
+                                response += '> Mưa đã hứng: **{:0.2f}** ark\n'.format(item[0])
+                                not_found = False
+                                break
+                        if not_found:
+                            response += '> Mưa đã hứng: **0** ark\n\n'
+                        await message.channel.send(response)
+                        return
+                if message.content == '!shisa':
+                    response = 'https://media.discordapp.net/attachments/859030316524896267/861580019696271360/image0.gif?width=1184&height=666'
+                    await message.channel.send(response)
+                    return
+                if message.content == '!gaquay':
+                    response = 'https://images-ext-1.discordapp.net/external/ua0bSN8loX0fQVEJCRr_6ijzgJ3sNL7pEGUfYP0rpgk/https/media.discordapp.net/attachments/810900401347231764/868373100520173628/ga-disco2.gif'
+                    await message.channel.send(response)
+                    return
+                if message.content == '!gaduday':
+                    response = 'https://images-ext-2.discordapp.net/external/uqy5_Jeezo5g0RpxAFhGXr8AC1MTYHI3nlY-kIBId6c/https/media.discordapp.net/attachments/829403779513974824/868427177165750272/du-day.gif'
+                    await message.channel.send(response)
+                    return
+                if message.content == '!milosquay':
+                    response = 'https://media.discordapp.net/attachments/829403779513974824/868816750601469972/vanvui.gif'
+                    await message.channel.send(response)
+                    return
 
-            if message.content == '!firoquay':
-                firo_quay_images = [
-                    'https://images-ext-1.discordapp.net/external/-wBBAsfQ-4BbintbypsvATrI-Axd8LDGu4F7j-v_XTo/https/media.discordapp.net/attachments/810900442648936459/873527848705609728/what_tx.gif',
-                    'https://media.discordapp.net/attachments/810900442648936459/873531954887266355/what-tx-eng.gif'
-                ]
-                run_num = random.randint(0,1)
-                response = firo_quay_images(run_num)
-                await message.channel.send(response)
-                return
+                if message.content == '!firoquay':
+                    firo_quay_images = [
+                        'https://images-ext-1.discordapp.net/external/-wBBAsfQ-4BbintbypsvATrI-Axd8LDGu4F7j-v_XTo/https/media.discordapp.net/attachments/810900442648936459/873527848705609728/what_tx.gif',
+                        'https://media.discordapp.net/attachments/810900442648936459/873531954887266355/what-tx-eng.gif'
+                    ]
+                    run_num = random.randint(0,1)
+                    response = firo_quay_images[run_num]
+                    await message.channel.send(response)
+                    return
 
             if str(message.channel.id) == "859030316524896267":
                 if message.content.startswith('!bot'):
